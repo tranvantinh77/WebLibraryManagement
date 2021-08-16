@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>@RenderSection("title", false)</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Library Management Systems" name="description" />
+    <meta content="LMS" name="author" />
+    <link rel="shortcut icon" href="~/favicon.ico">
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    @Styles.Render("~/Content/googlefont")
+    @Styles.Render("~/Content/fontawesome")
+    @Styles.Render("~/Content/simplelineicons")
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/bootstrapswitch")
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    @Styles.Render("~/Content/select2")
+    @Styles.Render("~/Content/select2bootstrap")
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    @Styles.Render("~/Content/components")
+    @Styles.Render("~/Content/plugins")
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    @Styles.Render("~/Content/login5")
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <!-- END THEME LAYOUT STYLES -->
+    <!-- END : LOGIN PAGE 5-1 -->
+    <!--[if lt IE 9]>
+    @Scripts.Render("~/bundles/respond")
+    @Scripts.Render("~/bundles/excanvas")
+    @Scripts.Render("~/bundles/ie8fix")
+    <![endif]-->
+    <!-- BEGIN CORE PLUGINS -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jscookie")
+    @Scripts.Render("~/bundles/jqueryslimscroll")
+    @Scripts.Render("~/bundles/jqueryblockui")
+    @Scripts.Render("~/bundles/bootstrapswitch")
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    @Scripts.Render("~/bundles/jqueryunobtrusiveajax")
+    @Scripts.Render("~/bundles/jqueryvalidate")
+    @Scripts.Render("~/bundles/additionalmethods")
+    @Scripts.Render("~/bundles/select2full")
+    @Scripts.Render("~/bundles/componentsselect2")
+    @Scripts.Render("~/bundles/jquerybackstretch")
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    @Scripts.Render("~/bundles/app")
+    @Scripts.Render("~/bundles/bootbox")
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    @Scripts.Render("~/bundles/login5")
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <!-- END THEME LAYOUT SCRIPTS -->
+    <!-- BEGIN CUSTOM SCRIPTS -->
+    @Scripts.Render("~/bundles/core.services")
+    <!-- END CUSTOM SCRIPTS -->
+    <!-- BEGIN CUSTOM SCRIPTS OF VIEW -->
+    @RenderSection("JavaScript", false)
+    <!-- END CUSTOM SCRIPTS OF VIEW -->
+</head>
+<!-- END HEAD -->
+<body class="login">
+    <!-- BEGIN : LOGIN PAGE 5-1 -->
+    <div class="user-login-5">
+        <div class="row bs-reset">
+            <div class="col-md-8 bs-reset mt-login-5-bsfix hidden-xs">
+                <div class="login-bg" style="background-image: url(/Content/assets/pages/img/login/bg2.jpg)"></div>
+                <div class="about-header" id="top-video">
+                </div>
+            </div>
+            <div class="col-md-4 login-container bs-reset mt-login-5-bsfix">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>

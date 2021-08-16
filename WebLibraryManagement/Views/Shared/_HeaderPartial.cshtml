@@ -1,0 +1,42 @@
+﻿
+<div class="modal fade"
+	 id="stackPopupIndex"
+	 tabindex="-1"
+	 role="dialog"
+	 data-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content"
+			 id="popupPageDetailIndex">
+		</div>
+	</div>
+</div>
+
+<div class="page-header navbar navbar-fixed-top">
+    <!-- BEGIN HEADER INNER -->
+    <div class="page-header-inner ">
+        <!-- BEGIN LOGO -->
+        <div class="page-logo">
+            <a href="/admin">
+                <img src="~/Content/images/logo.png" alt="logo" class="logo-default" />
+            </a>
+            <div class="menu-toggler sidebar-toggler">
+                <span></span>
+            </div>
+        </div>
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+            <span></span>
+        </a>
+        <div class="logon uppercase">@ResourceManagement.GetResourceText("SystemResourceID.Title", "Hệ thống quản lý thư viện", "Library Management Systems")</div>
+        <div class="top-menu hidden-sm hidden-xs">
+            <ul class="nav navbar-nav pull-right">
+                @*<div class="partialContents" data-url="@Url.Action(Constant.PartialView_SchoolPartial, Constant.Controller_Home)"></div>*@
+                @{Html.RenderAction(Constant.PartialView_SchoolPartial, Constant.Controller_Home);}
+                @Html.Partial(Constant.PartialView_LanguagePartial)
+                @Html.Partial(Constant.PartialView_LoginPartial)
+                <!-- END QUICK SIDEBAR TOGGLER -->
+            </ul>
+        </div>
+        <!-- END TOP NAVIGATION MENU -->
+    </div>
+    <!-- END HEADER INNER -->
+</div>

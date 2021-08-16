@@ -1,0 +1,36 @@
+﻿<div id="element-progress" style="opacity: 0.9; position: fixed; top: 0px; right: 0px; width: 100%; height: 100%; background-color: #f6f6f6; z-index: 20000000; display:none">
+    <div class="progress-group" style="position: fixed; top: 42%; left: 15%; width: 70%; ">
+        <span class="progress-text">Complete activated</span>
+        <span class="progress-number" id="progress-number-current">0%</span>
+        <div class="progress active" style="height:40px !important;">
+            <div id="element-bar" class="progress-bar progress-bar-aqua progress-bar-striped" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<button id="element-progress-click" style="display:none" onclick="core_progressbarpartial.onClick();">Click Me</button>
+
+<script type="text/javascript">
+
+    var core_progressbarpartial = {
+
+        onClick: function () {
+
+            var elem = document.getElementById("element-bar");
+            var num = document.getElementById("progress-number-current");
+            var width = 0;
+            var id = setInterval(frame, 100);
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                } else {
+                    width++;
+                    elem.style.width = width + '%';
+                    num.innerHTML = width + ' %';
+                }
+            }
+        },
+    }
+
+</script>

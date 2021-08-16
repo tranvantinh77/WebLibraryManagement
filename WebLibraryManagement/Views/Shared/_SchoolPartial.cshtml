@@ -1,0 +1,272 @@
+﻿@model List<SchoolModel>
+@{
+
+	bool isSuperAdmin = ViewBag.IsSuperAdmin;
+	if (isSuperAdmin)
+	{
+		<li class="dropdown dropdown-extended dropdown-user" style="width: 235px; margin-top: 9px">
+			<select id="select2-school" class="form-control"></select>
+		</li>
+	}
+	else
+	{
+		<li class="dropdown dropdown-extended dropdown-user" style="width: 235px; margin-top: 15px">
+			<span class="school-name username username-hide-on-mobile">@ViewBag.SchoolName</span>
+		</li>
+	}
+}
+@*<li class="dropdown dropdown-extended dropdown-user" style="width: 235px; margin-top: 9px">
+		<select id="select2-school" class="form-control"></select>
+	</li>*@
+<script>
+	var textSearch = '@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.Search", "Tìm kiếm", "Search"))';
+	window.addEventListener("DOMContentLoaded", (event) => {
+        $('#select2-school').select2({
+		ajax: {
+			url: '@Url.Action(Constant.Action_GetSchool, Constant.Controller_Home)',
+			data: function (params) {
+				var query = {
+					keyWord: params.term,
+					pageIndex: params.page || 1}
+				return query;
+			},
+			},
+			placeholder: textSearch,
+		});
+
+		$('#select2-school').on('select2:select', function (e) {
+			// Do something
+		//	console.log('tthung-e', $('#select2-school').val());
+			ShowLoading();
+			let _schoolId = $('#select2-school').val();
+			if (_schoolId) {
+				var param = { SchoolId: _schoolId};
+				core_services.postAsync('@Url.Action(Constant.Action_GetDashboardBySchoolId, Constant.Controller_Home)', JSON.stringify(param)
+					, function (res) {
+						HideLoading();
+						if (res.IsSuccess) {
+							if (res.Data) {
+						//		console.log('tthung-Data', res.Data);
+								let data = res.Data;
+
+								if (location.pathname == '/admin') {
+									try {
+										//TotalTransactions TotalBooks TotalPatrons TotalUsers
+										$("#TotalTransactions").empty().append(data.TotalTransactions);
+										$("#TotalBooks").empty().append(data.TotalBooks);
+										$("#TotalPatrons").empty().append(data.TotalPatrons);
+										$("#TotalUsers").empty().append(data.TotalUsers);
+
+										//chartdiv  chartdiv2 chartdiv4 chartdiv5 chartdiv6
+										////////////////////////////////////////////////////////////////////////////////////////
+										var pieChart = am4core.create("chartdiv", am4charts.PieChart);
+										pieChart.data = data.PatronStatusStatistics;
+										// Add and configure Series
+										var pieSeries = pieChart.series.push(new am4charts.PieSeries());
+										pieSeries.dataFields.value = "Total";
+										pieSeries.dataFields.category = "PatronStatusName";
+										pieSeries.slices.template.stroke = am4core.color("#fff");
+										pieSeries.slices.template.strokeWidth = 2;
+										pieSeries.slices.template.strokeOpacity = 1;
+										// This creates initial animation
+										pieSeries.hiddenState.properties.opacity = 1;
+										pieSeries.hiddenState.properties.endAngle = -90;
+										pieSeries.hiddenState.properties.startAngle = -90;
+										pieSeries.ticks.template.disabled = true;
+										pieSeries.labels.template.disabled = true;
+										// Disable sliding out of slices
+										pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
+										pieSeries.slices.template.states.getKey("hover").properties.scale = 1.1;
+										//////////////////////////////////////////////////////////////////////////////////////
+
+
+
+										////////////////////////////////////////////////////////////////////////////////////
+										var chart2 = am4core.create("chartdiv2", am4charts.PieChart);
+										chart2.data = data.PatronStatistics;
+										var pieSeries2 = chart2.series.push(new am4charts.PieSeries3D());
+										pieSeries2.dataFields.value = "Total";
+										pieSeries2.dataFields.category = "PatronType";
+										pieSeries2.slices.template.stroke = am4core.color("#fff");
+										pieSeries2.slices.template.strokeWidth = 2;
+										pieSeries2.slices.template.strokeOpacity = 1;
+
+										// This creates initial animation
+										pieSeries2.hiddenState.properties.opacity = 1;
+										pieSeries2.hiddenState.properties.endAngle = -90;
+										pieSeries2.hiddenState.properties.startAngle = -90;
+										pieSeries2.ticks.template.disabled = true;
+										pieSeries2.labels.template.disabled = true;
+										// Disable sliding out of slices
+										pieSeries2.slices.template.states.getKey("hover").properties.shiftRadius = 0;
+										pieSeries2.slices.template.states.getKey("hover").properties.scale = 1.1;
+										/////////////////////////////////////////////////////////////////////////////////
+
+										/////////////////////////////////////////////////////////////////////////////////
+										var chartMaterial = am4core.create("chartdiv5", am4charts.PieChart);
+										chartMaterial.hiddenState.properties.opacity = 0; // this creates initial fade-in
+										chartMaterial.radius = am4core.percent(70);
+										chartMaterial.innerRadius = am4core.percent(40);
+										chartMaterial.startAngle = 180;
+										chartMaterial.endAngle = 360;
+										var seriesMaterial = chartMaterial.series.push(new am4charts.PieSeries());
+										seriesMaterial.dataFields.value = "TotalBibs";
+										seriesMaterial.dataFields.category = "MaterialType";
+										seriesMaterial.slices.template.cornerRadius = 10;
+										seriesMaterial.slices.template.innerCornerRadius = 7;
+										seriesMaterial.slices.template.draggable = true;
+										seriesMaterial.slices.template.inert = true;
+										seriesMaterial.alignLabels = false;
+										seriesMaterial.hiddenState.properties.startAngle = 90;
+										seriesMaterial.hiddenState.properties.endAngle = 90;
+										//seriesMaterial.ticks.template.disabled = true;
+										seriesMaterial.labels.template.disabled = true;
+										chartMaterial.data = data.MaterialTypeStatistics;
+										chartMaterial.legend = new am4charts.Legend();
+										/////////////////////////////////////////////////////////////////////////////
+
+										/////////////////////////////////////////////////////////////////////////////////
+										var chartRecordType = am4core.create("chartdiv6", am4charts.PieChart);
+										chartRecordType.data = data.BibliographicRecordStatusStatistics;
+										chartRecordType.hiddenState.properties.opacity = 0; // this creates initial fade-in
+										chartRecordType.radius = am4core.percent(70);
+										chartRecordType.innerRadius = am4core.percent(40);
+										chartRecordType.startAngle = 180;
+										chartRecordType.endAngle = 360;
+										var seriesRecordType = chartRecordType.series.push(new am4charts.PieSeries());
+										seriesRecordType.dataFields.value = "TotalBibs";
+										seriesRecordType.dataFields.category = "RecordStatusName";
+										seriesRecordType.slices.template.cornerRadius = 10;
+										seriesRecordType.slices.template.innerCornerRadius = 7;
+										seriesRecordType.slices.template.draggable = true;
+										seriesRecordType.slices.template.inert = true;
+										seriesRecordType.alignLabels = false;
+										seriesRecordType.hiddenState.properties.startAngle = 90;
+										seriesRecordType.hiddenState.properties.endAngle = 90;
+										chartRecordType.legend = new am4charts.Legend();
+										/////////////////////////////////////////////////////////////////////////////////////
+
+										////////////////////////////////////////////////////////////////////////////////////
+										var chart = am4core.create('chartdiv4', am4charts.XYChart);
+										chart.data = data.CirculationTypeStatistics;
+										chart.colors.step = 2;
+										chart.legend = new am4charts.Legend()
+										chart.legend.position = 'top'
+										chart.legend.paddingBottom = 20
+										chart.legend.labels.template.maxWidth = 95
+										var xAxis = chart.xAxes.push(new am4charts.CategoryAxis())
+										xAxis.dataFields.category = 'Month'
+										xAxis.renderer.cellStartLocation = 0.1
+										xAxis.renderer.cellEndLocation = 0.9
+										xAxis.renderer.grid.template.location = 0;
+										var yAxis = chart.yAxes.push(new am4charts.ValueAxis());
+										yAxis.min = 0;
+
+										function createSeries(value, name) {
+											var series = chart.series.push(new am4charts.ColumnSeries())
+											series.dataFields.valueY = value
+											series.dataFields.categoryX = 'Month'
+											series.name = name
+
+											series.events.on("hidden", arrangeColumns);
+											series.events.on("shown", arrangeColumns);
+
+											var bullet = series.bullets.push(new am4charts.LabelBullet())
+											bullet.interactionsEnabled = false
+											bullet.dy = 30;
+											bullet.label.text = '{valueY}'
+											bullet.label.fill = am4core.color('#ffffff')
+
+											return series;
+										}
+
+										createSeries('@AppType.CirculationTrans.Checkout.ToString()', '@ResourceManagement.GetResourceText("SystemResourceID.ActionCheckout", "Mượn", "Checkout")');
+										createSeries('@AppType.CirculationTrans.Checkin.ToString()', '@ResourceManagement.GetResourceText("SystemResourceID.ActionCheckin", "Trả", "Checkin")');
+										createSeries('@AppType.CirculationTrans.Renew.ToString()', '@ResourceManagement.GetResourceText("SystemResourceID.ActionRenew", "Gia hạn", "Renew")');
+
+										function arrangeColumns() {
+
+											var series = chart.series.getIndex(0);
+
+											var w = 1 - xAxis.renderer.cellStartLocation - (1 - xAxis.renderer.cellEndLocation);
+											if (series.dataItems.length > 1) {
+												var x0 = xAxis.getX(series.dataItems.getIndex(0), "categoryX");
+												var x1 = xAxis.getX(series.dataItems.getIndex(1), "categoryX");
+												var delta = ((x1 - x0) / chart.series.length) * w;
+												if (am4core.isNumber(delta)) {
+													var middle = chart.series.length / 2;
+
+													var newIndex = 0;
+													chart.series.each(function (series) {
+														if (!series.isHidden && !series.isHiding) {
+															series.dummyData = newIndex;
+															newIndex++;
+														}
+														else {
+															series.dummyData = chart.series.indexOf(series);
+														}
+													})
+													var visibleCount = newIndex;
+													var newMiddle = visibleCount / 2;
+
+													chart.series.each(function (series) {
+														var trueIndex = chart.series.indexOf(series);
+														var newIndex = series.dummyData;
+
+														var dx = (newIndex - trueIndex + middle - newMiddle) * delta
+
+														series.animate({ property: "dx", to: dx }, series.interpolationDuration, series.interpolationEasing);
+														series.bulletsContainer.animate({ property: "dx", to: dx }, series.interpolationDuration, series.interpolationEasing);
+													})
+												}
+											}
+										}
+								////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+										////////////////////////////////////////////////////////////////////////////
+										if (data.IS_SUPER_ADMIN) {
+											 var chart3 = am4core.create("chartdiv3", am4charts.PieChart);
+													chart3.data = data.PatronSchoolStatistics;
+													var pieSeries3 = chart3.series.push(new am4charts.PieSeries3D());
+													pieSeries3.dataFields.value = "TotalPatrons";
+													pieSeries3.dataFields.category = "SchoolName";
+													pieSeries3.slices.template.stroke = am4core.color("#fff");
+													pieSeries3.slices.template.strokeWidth = 2;
+													pieSeries3.slices.template.strokeOpacity = 1;
+
+													// This creates initial animation
+													pieSeries3.hiddenState.properties.opacity = 1;
+													pieSeries3.hiddenState.properties.endAngle = -90;
+													pieSeries3.hiddenState.properties.startAngle = -90;
+													pieSeries3.ticks.template.disabled = true;
+													//pieSeries3.labels.template.disabled = true;
+													// Disable sliding out of slices
+													pieSeries3.slices.template.states.getKey("hover").properties.shiftRadius = 0;
+													pieSeries3.slices.template.states.getKey("hover").properties.scale = 1.1;
+										}
+										/////////////////////////////////////////////////////////////////////////////
+									}
+									catch (err) {
+										console.error(err);
+									}
+								}
+							}
+						}
+                        else {
+							core_notify.status(2).msg(res.Msg).done();
+							HideLoading();
+                        }
+					}
+					, function () {
+						HideLoading();
+						core_notification.updateFail();
+					});
+
+			}
+		});
+
+	});
+
+</script>

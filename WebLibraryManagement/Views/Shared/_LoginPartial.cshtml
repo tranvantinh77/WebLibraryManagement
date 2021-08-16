@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNet.Identity
+@using System.Security.Claims
+@helper RedirectToLogin()
+{
+    Response.Redirect(Url.Action(Constant.Action_Login, Constant.Controller_Account));
+}
+
+@if (!Request.IsAuthenticated)
+{
+    @RedirectToLogin()
+}
+else
+{
+	try
+	{
+		var fullNameIndex = ((ClaimsIdentity)HttpContext.Current.User.Identity).Claims
+			.Where(x => x.Type == ClaimTypes.UserData)
+			.Select(x => x.Value).FirstOrDefault();
+        var userName = HttpContext.Current.User.Identity.Name;
+		var roleUser = ((ClaimsIdentity)HttpContext.Current.User.Identity).Claims
+        .Where(x => x.Type == ClaimTypes.Role)
+        .Select(x => x.Value).ToList();
+        <li class="dropdown dropdown-user">
+			<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+				<img width="28" height="30" class="img-circle" src="@Url.Action(Constant.Action_ViewImage, Constant.Controller_UserManagement)" />
+				@*~/Content/images/avatar.jpg*@
+				<span class="username username-hide-on-mobile"> @fullNameIndex </span>
+				<i class="fa fa-angle-down"></i>
+			</a>
+            <ul class="dropdown-menu dropdown-menu-default">
+                <li class="">
+                    <a href="@Url.Action(Constant.Action_UserInfo_Update, Constant.Controller_UserManagement)">
+                        <i class="icon-user"></i> @ResourceManagement.GetResourceText("SystemResourceID.UserInformation", "Thông tin người dùng", "User information")
+                    </a>
+                </li>
+                <li class="">
+                    <a onclick="$$$changePass.onChangePass()">
+                        <i class="icon-refresh"></i> @ResourceManagement.GetResourceText("SystemResourceID.ChangePassword", "Thay đổi mật khẩu", "Change password")
+                    </a>
+                </li>
+                <li class="hidden">
+                    <a href="#">
+                        <i class="icon-question"></i> @ResourceManagement.GetResourceText("SystemResourceID.ChangeSecurityQuestions", "Thay đổi câu hỏi bảo mật", "Change security questions")
+                    </a>
+                </li>
+                <li class="divider hidden"> </li>
+                <li>
+                    @using (Html.BeginForm(Constant.Action_LogOff, Constant.Controller_Account, FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <a href="javascript:document.getElementById('logoutForm').submit()">
+                            <i class="icon-key"></i> @ResourceManagement.GetResourceText("SystemResourceID.Logout", "Đăng xuất", "Logout")
+                        </a>
+                    }
+                </li>
+            </ul>
+        </li>
+    }
+    catch
+    {
+        @RedirectToLogin()
+    }
+}

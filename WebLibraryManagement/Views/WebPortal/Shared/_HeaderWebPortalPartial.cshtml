@@ -1,0 +1,106 @@
+﻿<header class="c-layout-header c-layout-header-4 c-layout-header-default-mobile" data-minimize-offset="80">
+    <div class="c-navbar">
+        <div class="container">
+            <div class="justify-content-between align-items-center" style="padding-top: 10px; padding-left: 10px; padding-right: 10px">
+                <div class="col-lg-6 col-md-6">
+                    <p class="mb-0 py-2 text-center text-md-left"><strong>Phone:</strong> 1800-547-2145 | <strong>Email:</strong> thuvien.belib@gmail.com</p>
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <p class="mb-0 py-2 text-center text-md-right"><a href="@Url.Action("login", "account")">Đăng nhập</a> / <a href="#">Đăng ký</a></p>
+                </div>
+            </div>
+            <!-- BEGIN: BRAND -->
+            <div class="c-navbar-wrapper clearfix">
+                <div class="c-brand c-pull-left">
+                    <a href="/" class="c-logo">
+                        <img src="~/Content/webportal/img/logo.jpg" alt="Home" class="c-desktop-logo">
+                        <img src="~/Content/webportal/img/logo.jpg" alt="Home" class="c-desktop-logo-inverse">
+                        <img src="~/Content/webportal/img/logo.jpg" alt="Home" class="c-mobile-logo">
+                    </a>
+                    <button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                    </button>
+                    <button class="c-topbar-toggler" type="button">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                    <button class="c-search-toggler" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <!-- END: BRAND -->
+                <!-- BEGIN: QUICK SEARCH -->
+                <form class="c-quick-search" action="#">
+                    <input type="text" name="query" placeholder="Type to search..." value="" class="form-control" autocomplete="off">
+                    <span class="c-theme-link">&times;</span>
+                </form>
+                <!-- END: QUICK SEARCH -->
+                <!-- BEGIN: HOR NAV -->
+                <!-- BEGIN: LAYOUT/HEADERS/MEGA-MENU -->
+                <!-- BEGIN: MEGA MENU -->
+                <!-- Dropdown menu toggle on mobile: c-toggler class can be applied to the link arrow or link itself depending on toggle mode -->
+                <nav class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold">
+                    <ul class="nav navbar-nav c-theme-nav">
+                        <li>
+                            <a href="/" class="c-link">Trang chủ</a>
+                        </li>
+                        <li>
+                            <a href="#" class="c-link">Giới thiệu</a>
+                            <ul class="dropdown-menu nav navbar-nav c-theme-nav">
+                                <li>
+                                    <a href="@Url.Action("about", "webportal")" class="c-link c-font-14">Giới thiệu chung</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("about", "webportal")" class="c-link c-font-15">Cơ cấu tổ chức</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("about", "webportal")" class="c-link">Nội quy thư viện</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("about", "webportal")" class="c-link">Thông tin liên hệ</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("books", "webportal")" class="c-link">Sách giấy</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ebooks", "webportal")" class="c-link">Sách số</a>
+                        </li>
+                        <li>
+                            <a href="#" class="c-link">Tin tức</a>
+                            <ul class="dropdown-menu nav navbar-nav c-theme-nav">
+                                <li>
+                                    <a href="@Url.Action("news", "webportal")" class="c-link">Tin hoạt động</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("news", "webportal")" class="c-link">Tin tức & sự kiện</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("news", "webportal")" class="c-link">Góc bạn đọc</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("contact", "webportal")" class="c-link">Liên hệ</a>
+                        </li>
+
+                        @*<li>
+            <a href="@Url.Action("register", "webportal")" class="c-link">Đăng ký</a>
+        </li>
+        <li class="c-search-toggler-wrapper">
+            <a href="#" class="c-btn-icon c-search-toggler">
+                <i class="fa fa-search"></i>
+            </a>
+        </li>*@
+                    </ul>
+                </nav>
+                <!-- END: MEGA MENU -->
+                <!-- END: LAYOUT/HEADERS/MEGA-MENU -->
+                <!-- END: HOR NAV -->
+            </div>
+        </div>
+    </div>
+</header>

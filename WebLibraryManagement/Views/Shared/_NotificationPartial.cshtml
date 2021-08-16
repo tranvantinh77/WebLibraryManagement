@@ -1,0 +1,220 @@
+﻿<script type="text/javascript">
+
+    var title = '@ResourceManagement.GetResourceText("SystemResourceID.NotificationSystem", "HỆ THỐNG THÔNG BÁO", "NOTIFICATION SYSTEM")';
+
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "500",
+        "hideDuration": "5000",
+        "timeOut": "5000",
+        "extendedTimeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut",
+    };
+    var core_notification = {
+        messageNotify: function (_message) {
+            toastr['@Constant.Notification_Error'](_message, title);
+        },
+        messageNotifySuccess: function (_message) {
+            toastr['@Constant.Notification_Success'](_message, title);
+        },
+        updateSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.UpdateSucceed", "Cập nhật thành công", "Update successfully"))', title);
+        },
+        updateFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.UpdateFailed", "Cập nhật không thành công. Vui lòng thử lại", "Update failed. Please try again"))', title);
+        },
+        deleteSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.DeleteSucceed", "Xóa thành công", "Delete successfully"))', title);
+        },
+        deleteFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.DeleteFailed", "Xóa không thành công. Vui lòng thử lại", "Delete failed. Please try again"))', title);
+        },
+        sendApproveSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.SendApproveSucceed", "Biểu ghi đã chuyển duyệt", "Record send to approve successfully"))', title);
+        },
+        sendApproveFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.SendApproveFailed", "Biểu ghi chưa chuyển duyệt. Vui lòng thử lại", "Record send to approve failed. Please try again"))', title);
+        },
+        approveSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.ApproveSucceed", "Biểu ghi đã được duyệt", "Record approved successfully"))', title);
+        },
+        approveFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.ApproveFailed", "Biểu ghi chưa được duyệt", "Record approved failed"))', title);
+        },
+        lengthFileFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.LengthFileFailed", "Độ dài tên file không được vượt quá 250 ký tự", "Length filename < 250 characters"))', title);
+        },
+        sizeFileFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.SizeFileFailed", "Kích thước file phải nhỏ hơn cấu hình", "Size file must be < config"))', title);
+        },
+        duplicateFileFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.DuplicateFileFailed", "Tài liệu đã tồn tại trong hệ thống", "Document already exists in the system"))', title);
+        },
+        uploadFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.UploadFailed", "Tải tập tin lên không thành công. Vui lòng thử lại", "Upload failed. Please try again"))', title);
+        },
+        registerSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.RegisterSucceed", "Đăng ký thành công", "Register successfully"))', title);
+        },
+        registerFail: function (message) {
+            var _message = '@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.RegisterFailed", "Đăng ký không thành công. ", "Delete failed. Please try again. "))';
+            if (message != undefined) {
+                _message = _message + message;
+            }
+            toastr['@Constant.Notification_Error'](_message, title);
+        },
+        notChooseUsageFormality: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.NotChooseUsageFormality", "Chưa chọn hình thức sử dụng", "Not choose usage formality"))', title);
+        },
+        reSendSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.ReSendSucess", "Gửi thành công", "ReSend successfully"))', title);
+        },
+        reSendFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.ReSendFail", "Gửi thất bại", "ReSend failed"))', title);
+        },
+        fileTooBig: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResource.FileIsTooBig", "Tệp quá lớn", "File is too big"))', title);
+        },
+        fileUploadFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.FileIsNotValid", "Lỗi tải tệp", "Upload file fail"))', title);
+        },
+        registerSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.RegisterSuccess", "Đăng ký thành công", "Register successfully"))', title);
+        },
+        registerFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.SegisterFail", "Đăng ký không thành công", "Register failed"))', title);
+        },
+        registerTaxCodeIsExist: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.RegisterTaxCodeIsExist", "Tax code đã tồn tại", "Tax code is exist"))', title);
+        },
+        registerCaptcha: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.RegisterCaptcha", "Captcha không đúng", "Captcha was not correct"))', title);
+        },
+        registerFileIsNull: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.RegisterFileIsNull", "Tệp không tìm thấy", "File is null"))', title);
+        },
+        codeIsExsit: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.CodeIsExist", "Mã code đã tồn tại", "Code is exist"))', title);
+        },
+        customerNotExist: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.EmailMissing", "Email khách hàng chưa có", "Missing email customer"))', title);
+        },
+        notChange: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.NotChange", "Không thể thay đổi", "Do not changed!"))', title);
+        },
+        refuseSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.RefuseSuccess", "Hủy thành công", "Refuse successfully"))', title);
+        },
+        refuseFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.RefuseFail", "Hủy không thành công. Vui lòng thử lại", "Refuse failed. Please try again"))', title);
+        },
+        tryAgain: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.TryAgain", "Đã xảy ra lỗi, vui lòng thử lại", "Error!, please try again"))', title);
+        },
+        resetPasswordSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.ResetPasswordSuccess", "Đặt lại mật khẩu thành công", "Reset password successfully"))', title);
+        },
+        changePasswordSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.ChangePasswordSucceed", "Thay đổi mật khẩu thành công!", "Your password has been changed sucessfully!"))', title);
+        },
+        changeQASuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.ChangeQASucceed", "Thay đổi câu hỏi bảo mật thành công!", "Your question has been changed sucessfully!"))', title);
+        },
+        itemIsExist: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.itemIsExist", "Đã tồn tại", "Item is exist"))', title);
+        },
+        checkFileExcelBack: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.CheckFileExcelBack", "Vui lòng kiểm tra lại lại file excel!", "Check file excel back, please!"))', title);
+        },
+        checkInputHaveDangerousScript: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.CheckInputHaveDangerousScript", "Dữ liệu nhập liệu có đoạn mã nguy hiểm!", "Input have dangerous script. Check back, please!"))', title);
+        },
+        checkInputKeySearch: function () {
+            toastr['@Constant.Notification_Warning']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.CheckInputKeySearch", "Vui lòng nhập từ khóa để tìm kiếm", "Please input keyword for search"))', title);
+        },
+        checkChooseZ3950Database: function () {
+            toastr['@Constant.Notification_Warning']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.CheckChooseZ3950Database", "Vui lòng chọn cơ sở dữ liệu để tìm kiếm", "Please choose Z3050 database for search"))', title);
+        },
+        requiredFieldEmpty: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.RequiredFieldEmpty", "Trường bắt buộc(*) không được bỏ trống", "Required field must not be empty"))', title);
+        },
+        checkoutSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.CheckoutSuccess", "Mượn thành công", "Checkout successfully"))', title);
+        },
+        checkoutFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.CheckoutFail", "Mượn không thành công", "Checkout failed"))', title);
+        },
+        checkinSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.CheckinSuccess", "Trả thành công", "Checkin successfully"))', title);
+        },
+        checkinFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.CheckinFail", "Trả không thành công", "Checkin failed"))', title);
+        },
+        transactionFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.TransactionFail", "Giao dịch không thành công", "Transaction failed"))', title);
+        },
+        renewSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.RenewSuccess", "Gia hạn thành công", "Renew successfully"))', title);
+        },
+        renewFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.RenewFail", "Gia hạn không thành công", "Renew failed"))', title);
+        },
+        patronIdIsNotFound: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.PatronIdIsNotFound", "Mã độc giả không tồn tại", "Patron code is not found"))', title);
+        },
+        patronIsBlocked: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.PatronAreBlocked", "Độc giả đang bị khóa. Vui lòng liên hệ thư viện", "Patron is blocked. Please contact to the library"))', title);
+        },
+        barcodeIsNotFound: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.BarcodeIsNotFound", "Mã tài liệu không tồn tại", "Barcode is not found"))', title);
+        },
+        holdingIsNotAvailable: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.HoldingIsNotAvailable", "Tài liệu không sẵn sàng giao dịch", "Holding is not available"))', title);
+        },
+    };
+    // core_notify.status(2).msg('Cau thong bao').done(()=>{});
+    var core_notify = {
+		_msg: "",//Câu thông báo
+        _status: 1,//Loại thông báo 1- Success , 2-- Fail
+        _title: '',
+		msg: function (msg) {
+			this._msg = msg;
+            return this;
+        },
+        status: function (status) {
+            this._status = status;
+            return this;
+        },
+        title: function (title) {
+            this._title = title;
+            if (this._title = '') {
+                this._title = '@ResourceManagement.GetResourceText("SystemResourceID.NotificationSystem", "HỆ THỐNG THÔNG BÁO", "NOTIFICATION SYSTEM")';
+            }
+            return this;
+        },
+        //Thực thi
+        done: function (callback) {
+            this.callback = callback;
+            if (this._status==1) {
+				toastr['@Constant.Notification_Success'](this._msg, title);
+            }
+			else if (this._status==2) {
+				toastr['@Constant.Notification_Error'](this._msg, title);
+            }
+            if (this.callback) {
+                this.callback();
+            }
+        }
+    };
+
+</script>
+

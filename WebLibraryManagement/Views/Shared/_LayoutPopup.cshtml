@@ -1,0 +1,59 @@
+﻿<!-- BEGIN GLOBAL MANDATORY STYLES -->
+@Styles.Render("~/Content/googlefont")
+@Styles.Render("~/Content/fontawesome")
+@Styles.Render("~/Content/simplelineicons")
+@Styles.Render("~/Content/bootstrap")
+@Styles.Render("~/Content/bootstrapswitch")
+@Styles.Render("~/Content/bootstrapswitch")
+@Styles.Render("~/Content/componentseditor")
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+@Styles.Render("~/Content/skinsall")
+@Styles.Render("~/Content/style")
+@Styles.Render("~/Content/bootstrapdatepicker3")
+@Styles.Render("~/Content/select2")
+@Styles.Render("~/Content/select2bootstrap")
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL STYLES -->
+@Styles.Render("~/Content/components")
+@Styles.Render("~/Content/plugins")
+<!-- END THEME GLOBAL STYLES -->
+<!-- BEGIN THEME LAYOUT STYLES -->
+@Styles.Render("~/Content/layout")
+@Styles.Render("~/Content/darkblue")
+@Styles.Render("~/Content/custom")
+<!-- END THEME LAYOUT STYLES -->
+<!--[if lt IE 9]>
+@Scripts.Render("~/bundles/respond")
+@Scripts.Render("~/bundles/excanvas")
+@Scripts.Render("~/bundles/ie8fix")
+<![endif]-->
+<!-- BEGIN CORE PLUGINS -->
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jscookie")
+@Scripts.Render("~/bundles/jqueryslimscroll")
+@Scripts.Render("~/bundles/jqueryblockui")
+@Scripts.Render("~/bundles/bootstrapswitch")
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+@Scripts.Render("~/bundles/icheck")
+@Scripts.Render("~/bundles/bootstrapdatepicker")
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+@Scripts.Render("~/bundles/formicheck")
+@Scripts.Render("~/bundles/componentsdatetimepickers")
+@*@Scripts.Render("~/bundles/jqueryunobtrusiveajax")*@
+@Scripts.Render("~/bundles/jqueryvalidate")
+@Scripts.Render("~/bundles/select2full")
+@Scripts.Render("~/bundles/componentsselect2")
+@Scripts.Render("~/bundles/wysihtml5vsmarkdown")
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- BEGIN CUSTOM SCRIPTS -->
+@Scripts.Render("~/bundles/core.services")
+<!-- END CUSTOM SCRIPTS -->
+<!-- BEGIN JQUERY UPLOAD FILE -->
+@Scripts.Render("~/bundles/fileupload")
+<!-- END JQUERY UPLOAD FILE -->
+@RenderSection("JavaScript", false)
+@RenderBody()

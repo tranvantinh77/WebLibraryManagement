@@ -1,0 +1,56 @@
+﻿@model NewDetailsModel
+@{
+    Layout = "~/Views/WebPortal/Shared/_LayoutWebPortal.cshtml";
+}
+@section title
+{
+    @ResourceManagement.GetResourceText("SystemResourceID.About", "Giới thiệu", "About")
+}
+<!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+<div class="c-layout-breadcrumbs-1 c-bgimage-gioithieu">
+    <div class="container">
+        <div class="c-page-title c-pull-left">
+            <h2 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim">GIỚI THIỆU</h2>
+        </div>
+    </div>
+</div>
+<!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+<!-- BEGIN: PAGE CONTENT -->
+<!-- BEGIN: BLOG LISTING -->
+<div class="c-content-box c-size-md">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="c-content-blog-post-card-1-grid">
+                    <div class="c-content-new">
+                        <div class="c-content-detail">
+                            <div class="c-title c-font-bold c-font-24 c-margin-b-20">
+                                Giới thiệu sản phẩm và giải pháp thư viện điện tử, thư viện số trong các trường học
+                            </div>
+                            <p>
+                                BeLib là giải pháp phần mềm Thư viện điện tử – Thư viện số được xây dựng và phát triển từ năm 2019. Với tính năng ưu việt vượt trội trong quản lý tích hợp nghiệp vụ thư viện truyền thống và thư viện điện tử hiện đại, BeLib đã được ứng dụng thành công tại hơn nhiều tổ chức, đơn vị, trường học… trong và ngoài nước.
+                            </p>
+                            <p>
+                                BeLib được xây dựng trên nền tảng công nghệ điện toán đám mây, người dùng không cần phải cài đặt, chỉ cần có mạng Internet là có thể sử dụng được hệ thống ở bất cứ nơi đâu. Đây là sản phẩm chất lượng cao đáp ứng đầy đủ và tốt nhất nhu cầu của nhà quản lý trong việc quản lý thư viện. Các chức năng Hệ thống được thiết kế theo chuẩn thống nhất, đáp ứng đầy đủ nghiệp vụ quản lý thư viện trong các nhà trường. Đặc biệt hệ thống thư viện cung cấp đầy đủ các mẫu biểu báo cáo, phục vụ đắc lực cho ban giám hiệu nhà trường trong quá trình theo dõi và quản lý thư viện.
+                            </p>
+                            <p>
+                                Về mặt nghiệp vụ, Hệ thống quản lý thư viện trường học được xây dựng dựa trên các chuẩn chung của hệ thống thư viện thế giới và sử dụng giao diện web nên đảm bảo khả năng tương tác, tương thích với các hệ thống khác một cách dễ dàng. Hệ thống quản lý thư viện trường học bao gồm các phân hệ OPAC, Lưu thông, Biên mục, Bổ sung, Ấn phẩm định kỳ, Bạn đọc, Quản lý hệ thống, và đặc biệt chức năng thống kê, báo cáo hết sức mềm dẻo, thuận tiện và chính xác.
+                            </p>
+                            <p>
+                                Về phía nhà trường, ban lãnh đạo có thể tự điều chỉnh việc bổ sung và quản lý hiệu quả nguồn tài liệu, đánh giá chính xác nhu cầu và khả năng thông tin của học sinh, phân tích số liệu và đưa ra báo cáo cần thiết về hoạt động của thư viện.
+                            </p>
+                            <p>
+                                Về phía thư viện, cán bộ thư viện có thể quản lý tốt các ấn phẩm, tài sản thư viện và tự động hóa các khâu xử lý nghiệp vụ từ đơn giản đến phức tạp. Bạn đọc cũng dễ dàng tiếp cận, khai thác tối đa nguồn tài nguyên của thư viện phục vụ mục đích học tập và nghiên cứu. Hệ thống quản lý thư viện trường học đã thực sự góp phần chuẩn hoá nghiệp vụ thư viện, nâng cao hiệu quả quản lý thư viện trong trường học.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-right-menu">
+                @(Html.Partial("_RightMenuNewsPartial", Model.RightMenu))
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: BLOG LISTING  -->
+<!-- END: PAGE CONTENT -->

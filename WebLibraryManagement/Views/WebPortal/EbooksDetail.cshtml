@@ -1,0 +1,202 @@
+﻿@model DocumentModel
+@{
+	Layout = "~/Views/WebPortal/Shared/_LayoutWebPortal.cshtml";
+}
+@section title
+{
+	@ResourceManagement.GetResourceText("SystemResourceID.Ebooks", "Sách số", "Ebooks")
+}
+@helper ThTable()
+{
+	<tr>
+		<th>@ResourceManagement.GetResourceText("SystemResourceID.AttachmentFile", "Tệp đính kèm", "Attachment file")</th>
+		<th>@ResourceManagement.GetResourceText("SystemResourceID.FileType", "Loại tệp", "File type")</th>
+		<th>@ResourceManagement.GetResourceText("SystemResourceID.Size", "Kích thước", "Size")</th>
+		<th width="150px">@ResourceManagement.GetResourceText("SystemResourceID.Action", "Thao tác", "Action")</th>
+	</tr>
+}
+
+<div class="c-layout-breadcrumbs-1 c-bgimage-sachgiay">
+	<div class="container">
+		<div class="c-page-title c-pull-left">
+			<h2 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim">@Res.Get("EbooksDetail.DocmentDigital", "SÁCH SỐ", "Docment digital")</h2>
+		</div>
+	</div>
+</div>
+<div class="c-content-box c-size-md">
+	<div class="container">
+		<div class="c-layout-sidebar-menu c-theme ">
+			<!-- BEGIN: LAYOUT/SIDEBARS/SHOP-SIDEBAR-MENU -->
+			<div class="c-sidebar-menu-toggler">
+				<h3 class="c-title c-font-uppercase c-font-bold">DANH MỤC</h3>
+				<a href="javascript:;" class="c-content-toggler" data-toggle="collapse" data-target="#sidebar-menu-1">
+					<span class="c-line"></span>
+					<span class="c-line"></span>
+					<span class="c-line"></span>
+				</a>
+			</div>
+
+			<ul class="c-sidebar-menu collapse " id="sidebar-menu-1">
+				<li class="c-dropdown c-active c-open">
+					<a href="javascript:;" class="c-toggler c-font-uppercase c-font-bold">Sách Giáo Khoa<span class="c-arrow"></span></a>
+					<ul class="c-dropdown-menu">
+						<li class="c-active">
+							<a href="#"><i class="fa fa-caret-right"></i> Lớp 10</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Lớp 11</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Lớp 12</a>
+						</li>
+					</ul>
+				</li>
+				<li class="c-dropdown">
+					<a href="javascript:;" class="c-toggler c-font-uppercase c-font-bold">Sách tham khảo<span class="c-arrow"></span></a>
+					<ul class="c-dropdown-menu">
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Khoa học</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Lịch sử</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Văn học</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Địa lý</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Kinh tế</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Chính trị</a>
+						</li>
+					</ul>
+				</li>
+				<li class="c-dropdown">
+					<a href="javascript:;" class="c-toggler c-font-uppercase c-font-bold">Truyện và tạp chí<span class="c-arrow"></span></a>
+					<ul class="c-dropdown-menu">
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Truyện ngắn</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Truyện dài</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Truyện tranh</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-caret-right"></i> Báo và tạp chí</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+			<!-- END: LAYOUT/SIDEBARS/SHOP-SIDEBAR-MENU -->
+		</div>
+		<div class="c-layout-sidebar-content">
+			@if (Model == null)
+			{
+				<div class="c-margin-b-40 col-md-12 col-lg-12 col-sm-12">
+					Không tìm thấy
+				</div>
+			}
+			else
+			{
+				<div class="row">
+					<div class="c-margin-b-40 col-md-12 col-lg-12 col-sm-12">
+						<div class="col-md-4">
+							<a href="/webportal/booksdetail?id=@Model.Id">
+								<img class="img-responsive" src="/webportal/viewebookimage?id=@Model.Id" alt="" />
+							</a>
+						</div>
+						<div class="col-md-8">
+							<div class="c-info-list">
+								<h4 class="c-title c-font-bold c-font-20 c-font-dark">
+									<a class="c-theme-link" href="">@Model.Title</a>
+								</h4>
+								<div class="c-desc c-font-16 c-margin-b-10">@Model.Subject</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("EbooksDetail.Author", "Tác giả", "Author"): @Model.Creator</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("EbooksDetail.Contributor", "Tác giả phụ", "Contributor"): @Model.Contributor</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("EbooksDetail.Publisher", "Nhà xuất bản", "Publisher"): @Model.Publisher</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("EbooksDetail.DatePublisher", "Năm phát hành", "DatePublisher"): @Model.DatePublisher</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("EbooksDetail.DatePublisher", "Định dạng", "Format"): @Model.Format</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("EbooksDetail.Identifier", "Định danh", "Format"): @Model.Identifier</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("EbooksDetail.Resource", "Nguồn gốc", "Resource"): @Model.Resource</div>
+							</div>
+							@*<div class="c-margin-t-10">
+								<a href="/viewonline/index?id=@Model.Id&type=@AppType.MIME.Ebook" class="btn btn-sm c-theme-btn c-btn-square c-btn-uppercase c-btn-bold">Đọc online</a>
+							</div>*@
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-lg-12 col-sm-12">
+						@{
+
+							if (Model.LstAttachment != null)
+							{
+								<div class="row mt10">
+									<div class="col-md-12">
+										<div class="searh-result">
+											<div id="table-scroll" class="table-scroll-normal">
+												<div class="table-scrollable" style="min-height:initial !important">
+													<table class="table table-bordered main-table">
+														<thead class="flip-content1">
+															@ThTable()
+														</thead>
+														<tbody id="bodyFile">
+															@{
+																foreach (var item in Model.LstAttachment)
+																{
+																	<tr>
+																		<td>@item.Name</td>
+																		<td>@item.Ext</td>
+																		<td>@item.Size</td>
+																		<td>
+																			<a class="btn btn-xs purple-studio btn-icon-only" title="@Res.Get("View","Xem","View")"
+																			   onclick="onViewFile('@item.Id')"><i class="fa fa-eye" aria-hidden="true"></i></a>
+																			<a class="btn btn-xs blue btn-icon-only" title="@Res.Get("Download","Tải xuống","Doanload")" onclick="onDownLoad('@item.Id')"><i class="fa fa-download" aria-hidden="true"></i></a>
+																		</td>
+																	</tr>
+																}
+															}
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							}
+						}
+
+					</div>
+				</div>
+
+				@*<hr style="color: black; font-weight: bold" />*@
+				<div class="row">
+					<div class="col-md-12 col-lg-12 col-sm-12">
+						<div class="col-md-12 col-lg-12 col-sm-12">
+							@Html.Raw(Model.Description)
+						</div>
+					</div>
+				</div>
+
+			}
+		</div>
+	</div>
+</div>
+
+
+<script>
+	 var onViewFile= function (id) {
+		 var url = "/@Constant.Controller_ViewOnline/@Constant.Action_Index?id=" + id +'&type=Ebook';
+            window.open(url, '_blank');
+	}
+	var onDownLoad=function (id) {
+            var url = "/@Constant.Controller_DocumentManagement/@Constant.Action_Download?id=" + id;
+            window.open(url, '_blank');
+        }
+</script>

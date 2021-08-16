@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>@RenderSection("title", false)</title>
+    <meta content="Library Web Portal" name="description">
+    <meta content="LMS Team" name="author" />
+    <meta content="Thư viện điện tử, thư viện trường học, thư viện cộng đồng, thư viện cloud, quản lý thư viện" name="keywords">
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all' rel='stylesheet' type='text/css'>
+    <link href="/Content/webportal/assets/plugins/socicon/socicon.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/assets/plugins/bootstrap-social/bootstrap-social.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/assets/plugins/animate/animate.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN: BASE PLUGINS  -->
+    <link href="/Content/webportal/assets/plugins/revo-slider/css/settings.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/assets/plugins/revo-slider/css/layers.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/assets/plugins/revo-slider/css/navigation.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/assets/plugins/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/assets/plugins/owl-carousel/assets/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/assets/plugins/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/assets/plugins/slider-for-bootstrap/css/slider.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/bootstrapdatepicker3")
+    @Styles.Render("~/Content/select2")
+    @Styles.Render("~/Content/select2bootstrap")
+    <!-- END: BASE PLUGINS -->
+    <!-- BEGIN: PAGE STYLES -->
+    <link href="/Content/webportal/assets/plugins/ilightbox/css/ilightbox.css" rel="stylesheet" type="text/css" />
+    <!-- END: PAGE STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="/Content/webportal/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="/Content/webportal/css/default.css" rel="stylesheet" id="style_theme" type="text/css" />
+    <link href="/Content/webportal/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="icon" href="~/Content/webportal/favicon.ico" type="image/x-icon">
+
+    <!--[if lt IE 9]>
+    <script src="../../assets/global/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="/Content/webportal/assets/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/jquery.easing.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/reveal-animate/wow.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/demos/index/js/scripts/reveal-animate/reveal-animate.js" type="text/javascript"></script>
+    <!-- END: CORE PLUGINS -->
+    <!-- BEGIN: LAYOUT PLUGINS -->
+    <script src="/Content/webportal/assets/plugins/revo-slider/js/jquery.themepunch.tools.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/revo-slider/js/jquery.themepunch.revolution.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/revo-slider/js/extensions/revolution.extension.slideanims.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/revo-slider/js/extensions/revolution.extension.layeranimation.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/revo-slider/js/extensions/revolution.extension.navigation.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/revo-slider/js/extensions/revolution.extension.video.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/revo-slider/js/extensions/revolution.extension.parallax.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/smooth-scroll/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/typed/typed.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/js-cookie/js.cookie.js" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/select2full")
+    @Scripts.Render("~/bundles/componentsselect2")
+    @Scripts.Render("~/bundles/bootstrapdatepicker")
+    <!-- END: LAYOUT PLUGINS -->
+    <!-- BEGIN: THEME SCRIPTS -->
+    <script src="/Content/webportal/assets/base/js/components.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/base/js/components-shop.js" type="text/javascript"></script>
+    @*<script src="/Content/assets/global/scripts/app.min.js"></script>*@
+    <script src="/Content/webportal/assets/base/js/app.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            App.init(); // init core
+        });
+    </script>
+    <!-- END: THEME SCRIPTS -->
+    <!-- BEGIN: PAGE SCRIPTS -->
+    <script src="/Content/webportal/assets/demos/default/js/scripts/revo-slider/slider-4.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/revo-slider/js/extensions/revolution.extension.parallax.min.js" type="text/javascript"></script>
+    <script src="/Content/webportal/assets/plugins/revo-slider/js/extensions/revolution.extension.kenburn.min.js" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/twbsPagination")
+    <script src="~/Content/js/core.services.js"></script>
+    <script src="~/Content/js/core.format.services.js"></script>
+    <!-- END: PAGE SCRIPTS -->
+    <!-- END: LAYOUT/BASE/BOTTOM -->
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    @Html.Partial(Constant.PartialView_HeaderWebPortalPartial)
+    <!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    @*@Html.Partial(Constant.PartialView_SlideWebPortalPartial)*@
+    <!-- End Hero -->
+    <div class="c-layout-page">
+        @Html.Partial(Constant.PartialView_LoadingPartial)
+        @RenderBody()
+    </div>
+    <!-- End #main -->
+    <!-- ======= Footer ======= -->
+    @Html.Partial(Constant.PartialView_FooterWebPortalPartial)
+    <!-- End Footer -->
+    <!-- END: LAYOUT/FOOTERS/FOOTER-6 -->
+    <!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
+    <div class="c-layout-go2top">
+        <i class="icon-arrow-up"></i>
+    </div>
+    <!-- END: LAYOUT/FOOTERS/GO2TOP -->
+    <!-- BEGIN: LAYOUT/BASE/BOTTOM -->
+    <!-- BEGIN: CORE PLUGINS -->
+
+</body>
+
+</html>

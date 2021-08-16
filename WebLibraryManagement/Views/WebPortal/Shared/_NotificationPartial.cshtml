@@ -1,0 +1,73 @@
+﻿<script type="text/javascript">
+
+    var title = '@ResourceManagement.GetResourceText("SystemResourceID.Notification", "THÔNG BÁO", "NOTIFICATION")';
+
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "500",
+        "hideDuration": "5000",
+        "timeOut": "5000",
+        "extendedTimeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut",
+    };
+    var core_notification = {
+        messageNotify: function (_message) {
+            toastr['@Constant.Notification_Error'](_message, title);
+        },
+        messageNotifySuccess: function (_message) {
+            toastr['@Constant.Notification_Success'](_message, title);
+        },
+        sentSuccess: function () {
+            toastr['@Constant.Notification_Success']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.SentSucceed", "Gửi thông tin thành công", "Sent successfully"))', title);
+        },
+        sentFail: function () {
+            toastr['@Constant.Notification_Error']('@Html.Raw(ResourceManagement.GetResourceText("SystemResourceID.SentFailed", "Gửi thông tin thất bại. Vui lòng thử lại", "Sent failed. Please try again"))', title);
+        },
+        
+    };
+    // core_notify.status(2).msg('Cau thong bao').done(()=>{});
+    var core_notify = {
+		_msg: "",//Câu thông báo
+        _status: 1,//Loại thông báo 1- Success , 2-- Fail
+        _title: '',
+		msg: function (msg) {
+			this._msg = msg;
+            return this;
+        },
+        status: function (status) {
+            this._status = status;
+            return this;
+        },
+        title: function (title) {
+            this._title = title;
+            if (this._title = '') {
+                this._title = '@ResourceManagement.GetResourceText("SystemResourceID.Notification", "THÔNG BÁO", "NOTIFICATION")';
+            }
+            return this;
+        },
+        //Thực thi
+        done: function (callback) {
+            this.callback = callback;
+            if (this._status==1) {
+				toastr['@Constant.Notification_Success'](this._msg, title);
+            }
+			else if (this._status==2) {
+				toastr['@Constant.Notification_Error'](this._msg, title);
+            }
+            if (this.callback) {
+                this.callback();
+            }
+        }
+    };
+
+</script>
+

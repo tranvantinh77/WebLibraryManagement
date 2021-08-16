@@ -1,0 +1,102 @@
+﻿@model ContactModel
+@{
+    Layout = "~/Views/WebPortal/Shared/_LayoutWebPortal.cshtml";
+}
+@section title
+{
+    @ResourceManagement.GetResourceText("SystemResourceID.Contact", "Liên hệ", "Contact")
+}
+@Scripts.Render("~/bundles/jqueryvalidate")
+@Scripts.Render("~/bundles/jqueryunobtrusiveajax")
+@Scripts.Render("~/bundles/toastr")
+@Styles.Render("~/Content/toastr")
+@Html.Partial("_NotificationPartial")
+@using (Ajax.BeginForm(Constant.Action_Insert, Constant.Controller_WebPortal, new AjaxOptions
+{
+    HttpMethod = Constant.HttpMethod_POST,
+    OnSuccess = "core_add.onUpdateSuccess",
+    LoadingElementId = "element-loading"
+}, new { @role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+    <div class="c-layout-breadcrumbs-1 c-bgimage-lienhe">
+        <div class="container">
+            <div class="c-page-title c-pull-left">
+                <h2 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim">LIÊN HỆ</h2>
+            </div>
+        </div>
+    </div>
+    <!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+    <!-- BEGIN: PAGE CONTENT -->
+    <!-- BEGIN: CONTENT/CONTACT/FEEDBACK-1 -->
+    <div class="c-content-box c-size-md c-bg-white">
+        <div class="container">
+            <div class="c-content-feedback-1 c-option-1">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="c-container c-bg-green c-bg-img-bottom-right" style="background-image:url(../../assets/base/img/content/misc/feedback_box_1.png)">
+                            <div class="c-content-title-1 c-inverse">
+                                <h3 class="c-font-uppercase c-font-bold">THƯ VIỆN TRƯỜNG THPT</h3>
+                                <div class="c-line-left"></div>
+                                <p class="c-font-lowercase">
+                                    Địa chỉ: Số 25, Đường ADB, Phường An Phú, Q2, Thành phố HCM
+                                    <br />
+                                    Điện thoại: 800 123 3456
+                                    <br />
+                                    Email:
+                                    <a href="mailto:thuvien.belib@gmail.com ">
+                                        <span class="c-theme-color">thuvien.belib@gmail.com</span>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 xs-mt-12">
+                        <div class="c-contact">
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold">Liên hệ với chúng tôi</h3>
+                                <div class="c-line-left"></div>
+                                <p class="c-font-lowercase">Vui lòng nhập thông tin cần liên hệ với chúng tôi!</p>
+                            </div>
+                            <form action="/Contact/Insert" method="post">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control c-square c-theme input-lg", @placeholder = "Họ tên" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control c-square c-theme input-lg", @placeholder = "Email" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control c-square c-theme input-lg", @placeholder = "Tiêu đề" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextAreaFor(m => m.Body, new { @class = "form-control c-square c-theme input-lg", @placeholder = "Nội dung", @rows = 8 })
+                                </div>
+                                <button type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square">Gửi</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/CONTACT/FEEDBACK-1 -->
+    <!-- END: PAGE CONTENT -->
+}
+<script type="text/javascript">
+    core_add = {
+        onUpdateSuccess: function (result) {
+            if (result.status) {
+                core_notification.sentSuccess();
+                setTimeout(function () {
+                    window.location.reload();
+                }, 3000);
+                HideLoading();
+            }
+            else {
+                core_notification.sentFail();
+                HideLoading();
+            }
+        }
+    }
+</script>

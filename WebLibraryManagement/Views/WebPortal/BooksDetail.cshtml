@@ -1,0 +1,66 @@
+﻿@model BookDetailsModel
+@{
+    Layout = "~/Views/WebPortal/Shared/_LayoutWebPortal.cshtml";
+}
+@section title
+{
+    @ResourceManagement.GetResourceText("SystemResourceID.Books", "Sách giấy", "Books")
+}
+<div class="c-layout-breadcrumbs-1 c-bgimage-sachgiay">
+    <div class="container">
+        <div class="c-page-title c-pull-left">
+			<h2 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim">@Res.Get("BookDetail.DigiBook", "Sách số", "Digital book")</h2>
+        </div>
+    </div>
+</div>
+<div class="c-content-box c-size-md">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                @if (Model == null || Model.Details == null)
+                {
+                    <div class="c-margin-b-40 col-md-12 col-lg-12 col-sm-12">
+                        Không tìm thấy
+                    </div>
+                }
+                else
+                {
+                    <div class="c-margin-b-40 col-md-12 col-lg-12 col-sm-12">
+                        <div class="col-md-4">
+                            <a href="/webportal/booksdetail?id=@Model.Details.Id">
+                                <img class="img-responsive" src="/webportal/viewbookimage?id=@Model.Details.Id" alt="" />
+                            </a>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="c-info-list">
+                                <h4 class="c-title c-font-bold c-font-20 c-font-dark">
+                                    <a class="c-theme-link" href="">@Model.Details.BibSearches.Title</a>
+                                </h4>
+                                <div class="c-desc c-font-16 c-margin-b-10">@Model.Details.Description</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("BookDetail.Author", "Tác giả", "Author"): @Model.Details.BibSearches.Author</div>
+								<div class="c-font-14 c-font-thin"> @Res.Get("BookDetail.Publisher", "Nhà xuất bản", "Publisher"): @Model.Details.BibSearches.Publisher</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("BookDetail.PubDate", "Năm phát hành", "Public date"): @Model.Details.BibSearches.PubDate</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("BookDetail.Edition", "Tái bản", "Edition"): @Model.Details.BibSearches.Edition</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("BookDetail.Material.Name", "Thể loại", "Material name"): @Model.Details.Material.Name</div>
+                            </div>
+                            <div class="c-margin-t-10">
+								<button type="submit" class="btn btn-sm c-theme-btn c-btn-square c-btn-uppercase c-btn-bold">
+									@Res.Get("BooksPaging.RegisterBorrow", "Đăng ký mượn", "RegisterBorrow")
+								</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="color: black; font-weight: bold" />
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="col-md-12 col-lg-12 col-sm-12">
+                            @Html.Raw(Model.Details.Description)
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-4 col-right-menu">
+                @(Html.Partial("_RightMenuBooksPartial", Model.RightMenu))
+            </div>
+        </div>
+    </div>
+</div>

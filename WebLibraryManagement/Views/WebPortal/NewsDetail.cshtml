@@ -1,0 +1,68 @@
+﻿@model NewDetailsModel
+@{
+    Layout = "~/Views/WebPortal/Shared/_LayoutWebPortal.cshtml";
+}
+@section title
+{
+    @ResourceManagement.GetResourceText("SystemResourceID.NewsDetails", "Chi tiết tin tức", "News details")
+}
+<div class="c-layout-breadcrumbs-1 c-bgimage-tintuc">
+    <div class="container">
+        <div class="c-page-title c-pull-left">
+            <h2 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim">TIN TỨC & SỰ KIỆN</h2>
+        </div>
+    </div>
+</div>
+<!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+<!-- BEGIN: PAGE CONTENT -->
+<!-- BEGIN: BLOG LISTING -->
+<div class="c-content-box c-size-md">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8">
+                <div class="c-content-blog-post-card-1-grid">
+                    <div class="c-content-new">
+                        <div class="c-content-detail">
+                            @if (Model.Details == null)
+                            {
+                                <h3>Không tìm thấy</h3>
+                            }
+                            else
+                            {
+                                <div class="c-title c-font-bold c-font-24">
+                                    @Model.Details.Title
+                                </div>
+                                <div class="c-date">@Model.Details.DisplayPublishDate</div>
+                                <p>
+                                    @Html.Raw(Model.Details.Body)
+                                </p>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="c-content-ver-nav c-margin-t-60">
+                        @if (Model.RelatedNews != null && Model.RelatedNews.Any())
+                        {
+                            <div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
+                                <h3 class="c-font-bold c-font-uppercase">TIN LIÊN QUAN</h3>
+                                <div class="c-line-left c-theme-bg"></div>
+                            </div>
+                            <ul class="c-menu c-arrow-dot1 c-theme">
+                                @foreach (var item in Model.RelatedNews)
+                                {
+                                    <li><a href="/webportal/newsdetail?id=@item.Id">@item.Title</a></li>
+
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-right-menu">
+                @(Html.Partial("_RightMenuNewsPartial", Model.RightMenu))
+            </div>
+        </div>
+    </div>
+</div>
+

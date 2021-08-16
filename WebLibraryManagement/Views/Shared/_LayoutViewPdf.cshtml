@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>@RenderSection("title", false)</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Library Management Systems" name="description" />
+    <meta content="LMS" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    @Styles.Render("~/Content/googlefont")
+    @Styles.Render("~/Content/fontawesome")
+    @Styles.Render("~/Content/simplelineicons")
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/bootstrapswitch")
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    @Styles.Render("~/Content/skinsall")
+    @Styles.Render("~/Content/style")
+    @Styles.Render("~/Content/autocomplete")
+    @Styles.Render("~/Content/bootstrapdatepicker3")
+    @Styles.Render("~/Content/datatables")
+    @Styles.Render("~/Content/toastr")
+    @Styles.Render("~/Content/select2")
+    @Styles.Render("~/Content/select2bootstrap")
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    @Styles.Render("~/Content/components")
+    @Styles.Render("~/Content/plugins")
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    @Styles.Render("~/Content/inbox")
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    @Styles.Render("~/Content/layout")
+    @Styles.Render("~/Content/darkblue")
+    @Styles.Render("~/Content/custom")
+    <!-- END THEME LAYOUT STYLES -->
+    <!--[if lt IE 9]>
+    @Scripts.Render("~/bundles/respond")
+    @Scripts.Render("~/bundles/excanvas")
+    @Scripts.Render("~/bundles/ie8fix")
+    <![endif]-->
+    <!-- BEGIN CORE PLUGINS -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jscookie")
+    @Scripts.Render("~/bundles/jqueryslimscroll")
+    @Scripts.Render("~/bundles/jqueryblockui")
+    @Scripts.Render("~/bundles/bootstrapswitch")
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    @Scripts.Render("~/bundles/icheck")
+    @Scripts.Render("~/bundles/jstree")
+    @Scripts.Render("~/bundles/bootstrapdatepicker")
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/counterup")
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    @Scripts.Render("~/bundles/app")
+    @Scripts.Render("~/bundles/toastr")
+    @Scripts.Render("~/bundles/bootbox")
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    @Scripts.Render("~/bundles/formicheck")
+    @Scripts.Render("~/bundles/componentsdatetimepickers")
+    @Scripts.Render("~/bundles/jqueryunobtrusiveajax")
+    @Scripts.Render("~/bundles/jqueryvalidate")
+    @Scripts.Render("~/bundles/select2full")
+    @Scripts.Render("~/bundles/componentsselect2")
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    @Scripts.Render("~/bundles/layout")
+    @Scripts.Render("~/bundles/demo")
+    @Scripts.Render("~/bundles/quicksidebar")
+    @Scripts.Render("~/bundles/quicknav")
+    <!-- END THEME LAYOUT SCRIPTS -->
+    <!-- BEGIN CUSTOM SCRIPTS -->
+    @Scripts.Render("~/bundles/twbsPagination")
+    @Scripts.Render("~/bundles/core.services")
+    <!-- END CUSTOM SCRIPTS -->
+    @Scripts.Render("~/bundles/pdfobject")
+    <!-- BEGIN CUSTOM SCRIPTS OF VIEW -->
+    @RenderSection("JavaScript", false)
+    <!-- END CUSTOM SCRIPTS OF VIEW -->
+</head>
+<!-- END HEAD -->
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-sidebar-closed">
+    <div class="page-wrapper">
+        <!-- BEGIN HEADER -->
+        @Html.Partial(Constant.PartialView_HeaderPartial)
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN PROGRESSBAR -->
+            @Html.Partial(Constant.PartialView_LoadingPartial)
+            <!-- END PROGRESSBAR -->
+            <!-- BEGIN PROGRESSBAR -->
+            @Html.Partial(Constant.PartialView_ProgressBarPartial)
+            <!-- END PROGRESSBAR -->
+            <!-- BEGIN NOTIFICATION -->
+            @Html.Partial(Constant.PartialView_NotificationPartial)
+            <!-- END NOTIFICATION -->
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+                <!-- BEGIN SIDEBAR -->
+                <div class="page-sidebar navbar-collapse collapse ">
+                    <ul class="page-sidebar-menu page-header-fixed page-sidebar-menu-closed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">                      
+                        @{ Html.RenderAction(Constant.PartialView_LeftSidebarPartial, Constant.Controller_Home);}
+                    </ul>
+                    <!-- END SIDEBAR MENU -->
+                    <!-- END SIDEBAR MENU -->
+                </div>
+                <!-- END SIDEBAR -->
+            </div>
+            <!-- END SIDEBAR -->
+            <!-- BEGIN CONTENT -->
+            @RenderBody()
+            <!-- END CONTENT -->
+        </div>
+        <!-- END CONTAINER -->
+    </div>
+</body>
+</html>

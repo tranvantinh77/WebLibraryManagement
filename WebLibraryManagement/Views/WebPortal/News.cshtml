@@ -1,0 +1,91 @@
+﻿@model NewsGetPagingModel
+@{
+    Layout = "~/Views/WebPortal/Shared/_LayoutWebPortal.cshtml";
+}
+@section title
+{
+    @ResourceManagement.GetResourceText("SystemResourceID.News", "Tin tức", "News")
+}
+<!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+<div class="c-layout-breadcrumbs-1 c-bgimage-tintuc">
+    <div class="container">
+        <div class="c-page-title c-pull-left">
+            <h2 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim">TIN TỨC</h2>
+        </div>
+    </div>
+</div>
+<!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+<!-- BEGIN: PAGE CONTENT -->
+<!-- BEGIN: BLOG LISTING -->
+<div class="c-content-box c-size-md">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="c-content-blog-post-card-1-grid" id="body-content">
+                </div>
+            </div>
+            <div class="col-md-4 col-right-menu">
+                @(Html.Partial("_RightMenuNewsPartial", Model.RightMenu))
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: BLOG LISTING  -->
+<!-- END: PAGE CONTENT -->
+@section Scripts
+{
+    <script type="text/javascript">
+
+        var pageIndex = 1;
+        var ctorPage = {
+            UrlPage: '/webportal/newspaging',
+            ParamPageIndex: '@Constant.Parameter_PageIndex',
+            btnCssDefault: 'a.btn-df'
+        };
+
+        ShowLoading();
+        $(document).ready(function () {
+            pageIndex = core_services.getParamValue(ctorPage.ParamPageIndex);
+            core_lstpage.onSearch(pageIndex);
+        });
+
+        var core_lstpage = {
+
+            onClear: function () {
+                $("#body-content").empty();
+            },
+
+            onSearch: function (_pageIndex) {
+                //core_search.hideAdvancedSearch();
+                ShowLoading();
+                core_lstpage.onClear();
+                var model = {
+                    PageIndex: _pageIndex,
+                    Keyword: $('#txt-search-keyword').val()
+                }
+                $.post(ctorPage.UrlPage, model)
+                    .done(function (data) {
+                        $("#body-content").html(data);
+                        pageIndex = core_services.getParamValue(ctorPage.ParamPageIndex);
+                        core_services.replaceCurrentURL(ctorPage.ParamPageIndex, pageIndex, _pageIndex);
+                        HideLoading();
+                    }, 'html')
+                    .fail(function () {
+                        HideLoading();
+                    });
+            },
+
+            onSearchKeyUp: function (_pageIndex, event) {
+                var key;
+                if (window.event)
+                    key = window.event.keyCode;
+                else
+                    key = event.which;
+                if (key == 13) {
+                    core_lstpage.onSearch(_pageIndex);
+                }
+            }
+        }
+
+    </script>
+}

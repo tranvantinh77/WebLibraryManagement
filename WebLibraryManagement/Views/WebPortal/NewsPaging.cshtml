@@ -1,0 +1,124 @@
+﻿@model NewsGetPagingModel
+@{
+    Layout = null;
+}
+@section title
+{
+    @ResourceManagement.GetResourceText("SystemResourceID.NewsDetails", "Chi tiết tin tức", "News details")
+}
+    <div class="c-content-new">
+        @if (Model.LstData != null && Model.LstData.Any())
+        {
+            foreach (var item in Model.LstData)
+            {
+                <div class="c-content-item row">
+                    <div class="col-md-4">
+                        <img class="c-overlay-object img-responsive" src="/webportal/viewnewsimage/?id=@item.Id" alt="@item.Title">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="c-title c-font-bold c-font-18">
+                            <a href="/webportal/newsdetail?id=@item.Id">@item.Title</a>
+                        </div>
+                        <div class="c-date">@item.DisplayPublishDate</div>
+                        <p>
+                            @Html.Raw(item.Summary)
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+
+        @*<div class="c-content-item row">
+            <div class="col-md-4">
+                <img class="c-overlay-object img-responsive" src="/Content/webportal/img/news5.jpg" alt="">
+            </div>
+            <div class="col-md-8">
+                <div class="c-title c-font-bold c-font-18">
+                    <a href="tinchitiet.html">Top 4 nhà sách ở tp. Hồ Chí Minh nên khám phá 1 lần</a>
+                </div>
+                <div class="c-date">20 tháng 2, 2021</div>
+                <p>
+                    Sách là một tài sản vô giá của mỗi chúng ta. Đến với sách chúng ta có thêm thật nhiều tri thức.
+                    Và dưới đây là 4 các nhà sách ở TPHCM bạn nên khám phá một lần trong đời bởi nó sẽ không chỉ mang tới tri thức mà còn mang tới cho bạn nhiều điều thú vị hơn nữa.
+                </p>
+            </div>
+        </div>
+        <div class="c-content-item row">
+            <div class="col-md-4">
+                <img class="c-overlay-object img-responsive" src="/Content/webportal/img/news1.jpg" alt="">
+            </div>
+            <div class="col-md-8">
+                <div class="c-title c-font-bold c-font-18">
+                    <a href="tinchitiet.html">Thư viện trên toàn cầu trong cuộc chiến chống đại dịch COVID-19</a>
+                </div>
+                <div class="c-date">20 tháng 2, 2021</div>
+                <p>
+                    Dưới đây là 4 các nhà sách ở TPHCM bạn nên khám phá một lần trong đời bởi nó sẽ không chỉ mang tới tri thức mà còn mang tới cho bạn nhiều điều thú vị hơn nữa.
+                </p>
+            </div>
+        </div>
+        <div class="c-content-item row">
+            <div class="col-md-4">
+                <img class="c-overlay-object img-responsive" src="/Content/webportal/img/news3.jpg" alt="">
+            </div>
+            <div class="col-md-8">
+                <div class="c-title c-font-bold c-font-18">
+                    <a href="tinchitiet.html">Các chiến lược học tập để thu hút và giữ chân người sử dụng thư viện trẻ tuổi</a>
+                </div>
+                <div class="c-date">20 tháng 2, 2021</div>
+                <p>
+                    Nhà sách ở TPHCM bạn nên khám phá một lần trong đời bởi nó sẽ không chỉ mang tới tri thức mà còn mang tới cho bạn nhiều điều thú vị hơn nữa.
+                </p>
+            </div>
+        </div>
+        <div class="c-content-item row">
+            <div class="col-md-4">
+                <img class="c-overlay-object img-responsive" src="/Content/webportal/img/news2.jpg" alt="">
+            </div>
+            <div class="col-md-8">
+                <div class="c-title c-font-bold c-font-18">
+                    <a href="tinchitiet.html">Top 4 nhà sách ở tp. Hồ Chí Minh nên khám phá 1 lần</a>
+                </div>
+                <div class="c-date">20 tháng 2, 2021</div>
+                <p>
+                    Sách là một tài sản vô giá của mỗi chúng ta. Đến với sách chúng ta có thêm thật nhiều tri thức.
+                    Và dưới đây là 4 các nhà sách ở TPHCM bạn nên khám phá một lần trong đời bởi nó sẽ không chỉ mang tới tri thức mà còn mang tới cho bạn nhiều điều thú vị hơn nữa.
+                </p>
+            </div>
+        </div>*@
+    </div>
+<div class="c-pagination" id="page-selection">
+
+</div>
+<script>
+    setTimeout(function () {
+        if (@Model.PageIndex <= @Model.PageTotal && @Model.PageTotal > 1) {
+            $('#page-selection').twbsPagination('destroy');
+            $('#page-selection').twbsPagination({
+                totalPages: @Model.PageTotal,
+                startPage: @Model.PageIndex,
+                maxVisible: 5,
+                initiateStartPageClick: false,
+                first: '<i class="fa fa-angle-double-left"></i>',
+                last: '<i class="fa fa-angle-double-right"></i>',
+                next: '<i class="fa fa-angle-right"></i>',
+                prev: '<i class="fa fa-angle-left"></i>',
+                activeClass: 'c-active',
+                disabledClass: 'disabled',
+                nextClass: 'c-next',
+                prevClass: 'c-prev',
+                lastClass: 'c-last',
+                firstClass: 'c-first',
+                paginationClass:"c-content-pagination c-theme",
+                onPageClick: function (event, page) {
+                    core_lstpage.onSearch(page);
+                }
+            });
+            $('#page-selection').fadeIn();
+        }
+        else {
+            $('#page-selection').fadeOut();
+        }
+    }, 100)
+</script>
+

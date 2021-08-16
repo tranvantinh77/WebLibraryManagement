@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>@RenderSection("title", false)</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Library Management Systems" name="description" />
+    <meta content="LMS" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    @Styles.Render("~/Content/googlefont")
+    @Styles.Render("~/Content/fontawesome")
+    @Styles.Render("~/Content/simplelineicons")
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/bootstrapswitch")
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    @Styles.Render("~/Content/components")
+    @Styles.Render("~/Content/plugins")
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    @Styles.Render("~/Content/error")
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <!-- END THEME LAYOUT STYLES -->
+    <!--[if lt IE 9]>
+    @Scripts.Render("~/bundles/respond")
+    @Scripts.Render("~/bundles/excanvas")
+    @Scripts.Render("~/bundles/ie8fix")
+    <![endif]-->
+    <!-- BEGIN CORE PLUGINS -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jscookie")
+    @Scripts.Render("~/bundles/jqueryslimscroll")
+    @Scripts.Render("~/bundles/jqueryblockui")
+    @Scripts.Render("~/bundles/bootstrapswitch")
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    @Scripts.Render("~/bundles/app")
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN CUSTOM SCRIPTS OF VIEW -->
+    @RenderSection("JavaScript", false)
+    <!-- END CUSTOM SCRIPTS OF VIEW -->
+</head>
+<!-- END HEAD -->
+<body class="page-500-full-page">
+    <div class="row">
+        @RenderBody()
+    </div>
+</body>
+</html>

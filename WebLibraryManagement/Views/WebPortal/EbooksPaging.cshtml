@@ -1,0 +1,151 @@
+﻿@model DocumentGetPagingModel
+<div class="c-content-box c-size-md">
+    <div class="container">
+        <div class="c-layout-sidebar-menu c-theme ">
+            <!-- BEGIN: LAYOUT/SIDEBARS/SHOP-SIDEBAR-MENU -->
+            <div class="c-sidebar-menu-toggler">
+                <h3 class="c-title c-font-uppercase c-font-bold">DANH MỤC</h3>
+                <a href="javascript:;" class="c-content-toggler" data-toggle="collapse" data-target="#sidebar-menu-1">
+                    <span class="c-line"></span>
+                    <span class="c-line"></span>
+                    <span class="c-line"></span>
+                </a>
+            </div>
+
+            <ul class="c-sidebar-menu collapse " id="sidebar-menu-1">
+                <li class="c-dropdown c-active c-open">
+                    <a href="javascript:;" class="c-toggler c-font-uppercase c-font-bold">Sách Giáo Khoa<span class="c-arrow"></span></a>
+                    <ul class="c-dropdown-menu">
+                        <li class="c-active">
+                            <a href="#"><i class="fa fa-caret-right"></i> Lớp 10</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Lớp 11</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Lớp 12</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="c-dropdown">
+                    <a href="javascript:;" class="c-toggler c-font-uppercase c-font-bold">Sách tham khảo<span class="c-arrow"></span></a>
+                    <ul class="c-dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Khoa học</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Lịch sử</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Văn học</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Địa lý</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Kinh tế</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Chính trị</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="c-dropdown">
+                    <a href="javascript:;" class="c-toggler c-font-uppercase c-font-bold">Truyện và tạp chí<span class="c-arrow"></span></a>
+                    <ul class="c-dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Truyện ngắn</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Truyện dài</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Truyện tranh</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-caret-right"></i> Báo và tạp chí</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- END: LAYOUT/SIDEBARS/SHOP-SIDEBAR-MENU -->
+        </div>
+        <div class="c-layout-sidebar-content ">
+            <!-- BEGIN: PAGE CONTENT -->
+            <!-- BEGIN: CONTENT/SHOPS/SHOP-2-8 -->
+            @if (Model.LstData == null || !Model.LstData.Any())
+            {
+                <h3>Không tìm thấy tài liệu</h3>
+            }
+            else
+            {
+                foreach (var book in Model.LstData)
+                {
+                    <div class="row c-margin-b-40">
+                        <div class="c-content-product-2 c-bg-white">
+                            <div class="col-md-3">
+                                <a href="/webportal/ebooksdetail?id=@book.Id">
+                                    <img class="img-responsive" src="/webportal/viewebookimage/?id=@book.Id" alt="" />
+                                </a>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="c-info-list">
+                                    <h4 class="c-title c-font-bold c-font-20 c-font-dark">
+                                        <a class="c-theme-link" href="/webportal/ebooksdetail?id=@book.Id">@book.Title</a>
+                                    </h4>
+                                    <div class="c-desc c-font-16 c-margin-b-10">@book.Subject</div>
+                                    <div class="c-font-14 c-font-thin">Tác giả: @book.Creator</div>
+                                    <div class="c-font-14 c-font-thin">Nhà xuất bản: @book.Publisher</div>
+                                </div>
+                                <div class="c-margin-t-10">
+                                    <a href="/viewonline/index?id=@book.Id&type=@AppType.MIME.Ebook" class="btn btn-sm c-theme-btn c-btn-square c-btn-uppercase c-btn-bold">
+                                        Đọc online
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+            <div class="c-margin-t-20"></div>
+            <!-- END: PAGE CONTENT -->
+        </div>
+    </div>
+</div>
+<div class="c-pagination" id="page-selection">
+
+</div>
+<script>
+    setTimeout(function () {
+        if (@Model.PageIndex <= @Model.PageTotal && @Model.PageTotal > 1) {
+            $('#page-selection').twbsPagination('destroy');
+            $('#page-selection').twbsPagination({
+                totalPages: @Model.PageTotal,
+                startPage: @Model.PageIndex,
+                maxVisible: 5,
+                initiateStartPageClick: false,
+                first: '<i class="fa fa-angle-double-left"></i>',
+                last: '<i class="fa fa-angle-double-right"></i>',
+                next: '<i class="fa fa-angle-right"></i>',
+                prev: '<i class="fa fa-angle-left"></i>',
+                activeClass: 'c-active',
+                disabledClass: 'disabled',
+                nextClass: 'c-next',
+                prevClass: 'c-prev',
+                lastClass: 'c-last',
+                firstClass: 'c-first',
+                paginationClass:"c-content-pagination c-theme",
+                onPageClick: function (event, page) {
+                    core_lstpage.onSearch(page);
+                }
+            });
+            $('#page-selection').fadeIn();
+        }
+        else {
+            $('#page-selection').fadeOut();
+        }
+    }, 100)
+</script>
+

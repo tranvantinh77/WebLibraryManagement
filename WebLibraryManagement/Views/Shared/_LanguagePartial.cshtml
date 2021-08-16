@@ -1,0 +1,119 @@
+﻿@using System.Security.Claims
+@{
+    string languageCode = ((ClaimsIdentity)HttpContext.Current.User.Identity)
+                                .Claims.Where(x => x.Type == ClaimTypes.Country)
+                                .Select(x => x.Value).FirstOrDefault();
+    string user = ((ClaimsIdentity)HttpContext.Current.User.Identity)
+                                .Claims.Where(x => x.Type == ClaimTypes.Name)
+                                .Select(x => x.Value).FirstOrDefault();
+    var roleUser = ((ClaimsIdentity)HttpContext.Current.User.Identity)
+                   .Claims.Where(x => x.Type == ClaimTypes.Role)
+                   .Select(x => x.Value).ToList();
+    AppLanguageCode LangCode = LMS.Web.App.CacheProvider.GetLocalLanguage(user, languageCode);
+}
+@helper LanguageCurrent(AppLanguageCode langCode)
+{
+    switch (langCode)
+    {
+        case AppLanguageCode.Vietnamese:
+            <img class="img-circle" src="~/Content/images/vietnam.png" />
+            break;
+        case AppLanguageCode.English:
+            <img class="img-circle" src="~/Content/images/anh.png" />
+            break;
+        default:
+            break;
+    }
+}
+@helper LanguageMenu(AppLanguageCode langCode)
+{
+    string langCurrent = string.Empty;
+    int code = (int)langCode;
+    if (code == 0)
+    {
+        langCurrent = Constant.Language_Vietnamese;
+    }
+    else
+    {
+        langCurrent = Constant.Language_English;
+    }
+    //else if (code == 2)
+    //{
+    //    langCurrent = Constant.Language_French;
+    //}
+    //else if (code == 3)
+    //{
+    //    langCurrent = Constant.Language_Chinese;
+    //}
+    //else if (code == 4)
+    //{
+    //    langCurrent = Constant.Language_Japanese;
+    //}
+    //else
+    //{
+    //    langCurrent = Constant.Language_Russian;
+    //}
+    AppLanguageCode[] lstLanguageCode = (AppLanguageCode[])Enum.GetValues(typeof(AppLanguageCode));
+    foreach (AppLanguageCode lang in lstLanguageCode.Where(i => i != langCode).ToArray())
+    {
+        switch (lang)
+        {
+            case AppLanguageCode.Vietnamese:
+                <li>
+                    <a onclick="ChangeLanguage('@langCurrent', '@Constant.Language_Vietnamese')">
+                        <img class="img-circle" src="~/Content/images/vietnam.png" /> @ResourceManagement.GetResourceText("SystemResourceID.Vietnamese", "Tiếng Việt", "Vietnamese")
+                    </a>
+                </li>
+                break;
+            case AppLanguageCode.English:
+                <li>
+                    <a onclick="ChangeLanguage('@langCurrent', '@Constant.Language_English')">
+                        <img class="img-circle" src="~/Content/images/anh.png" /> @ResourceManagement.GetResourceText("SystemResourceID.English", "Tiếng Anh", "English")
+                    </a>
+                </li>
+                break;
+            @*case AppLanguageCode.French:
+                <li>
+                    <a onclick="ChangeLanguage('@langCurrent', '@Constant.Language_French')">
+                        <img class="img-circle" src="~/Content/images/phap.png" /> @ResourceManagement.GetResourceText("SystemResourceID.French", "Tiếng Pháp", "French")
+                    </a>
+                </li>
+                break;
+            case AppLanguageCode.Japanese:
+                <li>
+                    <a onclick="ChangeLanguage('@langCurrent', '@Constant.Language_Japanese')">
+                        <img class="img-circle" src="~/Content/images/nhat.png" /> @ResourceManagement.GetResourceText("SystemResourceID.Japanese", "Tiếng Nhật", "Japanese")
+                    </a>
+                </li>
+                break;
+            case AppLanguageCode.Chinese:
+                <li>
+                    <a onclick="ChangeLanguage('@langCurrent', '@Constant.Language_Chinese')">
+                        <img class="img-circle" src="~/Content/images/trung.png" /> @ResourceManagement.GetResourceText("SystemResourceID.Chinese", "Tiếng Trung", "Chinese")
+                    </a>
+                </li>
+                break;
+            case AppLanguageCode.Russian:
+                <li>
+                    <a onclick="ChangeLanguage('@langCurrent', '@Constant.Language_Russian')">
+                        <img class="img-circle" src="~/Content/images/nga.png" /> @ResourceManagement.GetResourceText("SystemResourceID.Russian", "Tiếng Nga", "Russian")
+                    </a>
+                </li>
+                break;*@
+            default:
+                break;
+        }
+    }
+}
+
+<li class="dropdown dropdown-user lang">
+    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        @LanguageCurrent(LangCode)
+        <span class="username username-hide-on-mobile"></span>
+        <i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-default">
+        @LanguageMenu(LangCode)
+        <li class="divider hidden"></li>
+    </ul>
+</li>

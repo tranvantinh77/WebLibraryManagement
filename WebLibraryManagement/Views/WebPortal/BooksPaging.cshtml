@@ -1,0 +1,74 @@
+﻿@model BibSearchGetPagingModel
+@if (Model.LstData == null || !Model.LstData.Any())
+{
+    <h3>Không tìm thấy sách</h3>
+}
+else
+{
+    <div class="row">
+        @foreach (var book in Model.LstData)
+        {
+            <div class="c-margin-b-40 col-md-6 col-lg-6 col-sm-6">
+                <div class="c-content-product-2 c-bg-white">
+                    <div class="col-md-4">
+                        <a href="/webportal/booksdetail?id=@book.BibliographicId">
+                            <img style="max-height: 220px!important;max-width:317px!important" class="img-responsive" src="/webportal/viewbookimage/?id=@book.BibliographicId" alt="" />
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="c-info-list">
+                            <h4 class="c-title c-font-bold c-font-20 c-font-dark">
+                                <a class="c-theme-link" href="/webportal/booksdetail?id=@book.BibliographicId">@book.Title</a>
+                            </h4>
+                            <div class="c-desc c-font-16 c-margin-b-10">@book.Description</div>
+							<div class="c-font-14 c-font-thin">
+								@Res.Get("BooksPaging.Author", "Tác giả", "Author"): @book.Author
+							</div>
+								<div class="c-font-14 c-font-thin">@Res.Get("BooksPaging.Publisher", "Nhà xuất bản", "Publisher"): @book.Publisher</div>
+							</div>
+                        <div class="c-margin-t-10">
+							<button type="submit" class="btn btn-sm c-theme-btn c-btn-square c-btn-uppercase c-btn-bold">
+								@Res.Get("BooksPaging.RegisterBorrow", "Đăng ký mượn","RegisterBorrow")
+							</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+<div class="c-pagination" id="page-selection">
+
+</div>
+<script>
+    setTimeout(function () {
+        if (@Model.PageIndex <= @Model.PageTotal && @Model.PageTotal > 1) {
+            $('#page-selection').twbsPagination('destroy');
+            $('#page-selection').twbsPagination({
+                totalPages: @Model.PageTotal,
+                startPage: @Model.PageIndex,
+                maxVisible: 5,
+                initiateStartPageClick: false,
+                first: '<i class="fa fa-angle-double-left"></i>',
+                last: '<i class="fa fa-angle-double-right"></i>',
+                next: '<i class="fa fa-angle-right"></i>',
+                prev: '<i class="fa fa-angle-left"></i>',
+                activeClass: 'c-active',
+                disabledClass: 'disabled',
+                nextClass: 'c-next',
+                prevClass: 'c-prev',
+                lastClass: 'c-last',
+                firstClass: 'c-first',
+                paginationClass:"c-content-pagination c-theme",
+                onPageClick: function (event, page) {
+                    core_lstpage.onSearch(page);
+                }
+            });
+            $('#page-selection').fadeIn();
+        }
+        else {
+            $('#page-selection').fadeOut();
+        }
+    }, 100)
+</script>
+
