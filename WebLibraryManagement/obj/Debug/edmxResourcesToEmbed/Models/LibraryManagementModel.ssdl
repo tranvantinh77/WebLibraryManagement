@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="author">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="order_number" Type="int" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <EntityType Name="banner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="image" Type="nvarchar" MaxLength="255" />
+    <Property Name="publish_date" Type="datetime" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" />
+    <Property Name="status" Type="bit" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <EntityType Name="blocked_tracking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="action_date" Type="datetime" />
+    <Property Name="action_type" Type="int" />
+    <Property Name="patron_id" Type="int" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <EntityType Name="books">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="nvarchar" MaxLength="255" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="author" Type="nvarchar" MaxLength="255" />
+    <Property Name="image" Type="nvarchar" MaxLength="255" />
+    <Property Name="publish_date" Type="datetime" />
+    <Property Name="publish_place" Type="nvarchar" MaxLength="255" />
+    <Property Name="publisher" Type="nvarchar" MaxLength="255" />
+    <Property Name="status" Type="bit" />
+    <Property Name="total" Type="int" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+    <Property Name="material_type_id" Type="int" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="nvarchar" MaxLength="255" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" />
+    <Property Name="order_number" Type="int" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <EntityType Name="checkout">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="patron_id" Type="int" />
+    <Property Name="book_id" Type="int" />
+    <Property Name="checkout_date" Type="datetime" />
+    <Property Name="due_date" Type="datetime" />
+    <Property Name="renew_count" Type="int" />
+    <Property Name="status" Type="bit" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <EntityType Name="circulation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="book_id" Type="int" />
+    <Property Name="patron_id" Type="int" />
+    <Property Name="action" Type="bit" />
+    <Property Name="checkout_date" Type="datetime" />
+    <Property Name="due_date" Type="datetime" />
+    <Property Name="trans_date" Type="datetime" />
+    <Property Name="renew_count" Type="int" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <EntityType Name="contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="full_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
+    <Property Name="body" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <EntityType Name="material_types">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="type" Type="nvarchar" MaxLength="255" />
+    <Property Name="order_number" Type="int" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <EntityType Name="news">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="summary" Type="nvarchar(max)" />
+    <Property Name="body" Type="nvarchar(max)" />
+    <Property Name="publish_date" Type="datetime" />
+    <Property Name="image" Type="nvarchar" MaxLength="255" />
+    <Property Name="status" Type="bit" />
+    <Property Name="total_view" Type="int" />
+    <Property Name="author_id" Type="int" />
+    <Property Name="category_id" Type="int" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <EntityType Name="patron">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="nvarchar" MaxLength="255" />
+    <Property Name="status" Type="bit" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+    <Property Name="type_id" Type="int" />
+    <Property Name="user_id" Type="int" />
+  </EntityType>
+  <EntityType Name="patron_type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="nvarchar" MaxLength="255" />
+    <Property Name="name" Type="bit" />
+    <Property Name="order_number" Type="bit" />
+    <Property Name="status" Type="bit" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <EntityType Name="renew_card_logs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="new_due_date" Type="datetime" />
+    <Property Name="old_due_date" Type="datetime" />
+    <Property Name="patron_id" Type="int" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <EntityType Name="user_info">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" />
+    <Property Name="full_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" />
+    <Property Name="phone" Type="nvarchar" MaxLength="11" />
+    <Property Name="code" Type="nvarchar" MaxLength="255" />
+    <Property Name="name" Type="bit" />
+    <Property Name="order_number" Type="bit" />
+    <Property Name="status" Type="bit" />
+    <Property Name="role" Type="bit" />
+    <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="update_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="active_fag" Type="bit" />
+  </EntityType>
+  <Association Name="FK_blocked_tracking_ToPatron">
+    <End Role="patron" Type="Self.patron" Multiplicity="0..1" />
+    <End Role="blocked_tracking" Type="Self.blocked_tracking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patron">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="blocked_tracking">
+        <PropertyRef Name="patron_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_books_ToTable">
+    <End Role="material_types" Type="Self.material_types" Multiplicity="0..1" />
+    <End Role="books" Type="Self.books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="material_types">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="books">
+        <PropertyRef Name="material_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_checkout_ToBook">
+    <End Role="books" Type="Self.books" Multiplicity="0..1" />
+    <End Role="checkout" Type="Self.checkout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="books">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="checkout">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_checkout_ToPatron">
+    <End Role="patron" Type="Self.patron" Multiplicity="0..1" />
+    <End Role="checkout" Type="Self.checkout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patron">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="checkout">
+        <PropertyRef Name="patron_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_circulation_ToBook">
+    <End Role="books" Type="Self.books" Multiplicity="0..1" />
+    <End Role="circulation" Type="Self.circulation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="books">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="circulation">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_circulation_ToPatron">
+    <End Role="patron" Type="Self.patron" Multiplicity="0..1" />
+    <End Role="circulation" Type="Self.circulation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patron">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="circulation">
+        <PropertyRef Name="patron_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_news_author">
+    <End Role="author" Type="Self.author" Multiplicity="0..1" />
+    <End Role="news" Type="Self.news" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="author">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="news">
+        <PropertyRef Name="author_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_news_category">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="news" Type="Self.news" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="news">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_patron_To_patron_type">
+    <End Role="patron_type" Type="Self.patron_type" Multiplicity="0..1" />
+    <End Role="patron" Type="Self.patron" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patron_type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="patron">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_patron_To_user_info">
+    <End Role="user_info" Type="Self.user_info" Multiplicity="0..1" />
+    <End Role="patron" Type="Self.patron" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_info">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="patron">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_renew_card_logs_ToPatron">
+    <End Role="patron" Type="Self.patron" Multiplicity="0..1" />
+    <End Role="renew_card_logs" Type="Self.renew_card_logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="patron">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="renew_card_logs">
+        <PropertyRef Name="patron_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LibraryManagementModelStoreContainer">
+    <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="banner" EntityType="Self.banner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="blocked_tracking" EntityType="Self.blocked_tracking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="books" EntityType="Self.books" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="checkout" EntityType="Self.checkout" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="circulation" EntityType="Self.circulation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contact" EntityType="Self.contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="material_types" EntityType="Self.material_types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="news" EntityType="Self.news" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="patron" EntityType="Self.patron" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="patron_type" EntityType="Self.patron_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="renew_card_logs" EntityType="Self.renew_card_logs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user_info" EntityType="Self.user_info" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_blocked_tracking_ToPatron" Association="Self.FK_blocked_tracking_ToPatron">
+      <End Role="patron" EntitySet="patron" />
+      <End Role="blocked_tracking" EntitySet="blocked_tracking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_books_ToTable" Association="Self.FK_books_ToTable">
+      <End Role="material_types" EntitySet="material_types" />
+      <End Role="books" EntitySet="books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_checkout_ToBook" Association="Self.FK_checkout_ToBook">
+      <End Role="books" EntitySet="books" />
+      <End Role="checkout" EntitySet="checkout" />
+    </AssociationSet>
+    <AssociationSet Name="FK_checkout_ToPatron" Association="Self.FK_checkout_ToPatron">
+      <End Role="patron" EntitySet="patron" />
+      <End Role="checkout" EntitySet="checkout" />
+    </AssociationSet>
+    <AssociationSet Name="FK_circulation_ToBook" Association="Self.FK_circulation_ToBook">
+      <End Role="books" EntitySet="books" />
+      <End Role="circulation" EntitySet="circulation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_circulation_ToPatron" Association="Self.FK_circulation_ToPatron">
+      <End Role="patron" EntitySet="patron" />
+      <End Role="circulation" EntitySet="circulation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_news_author" Association="Self.FK_news_author">
+      <End Role="author" EntitySet="author" />
+      <End Role="news" EntitySet="news" />
+    </AssociationSet>
+    <AssociationSet Name="FK_news_category" Association="Self.FK_news_category">
+      <End Role="category" EntitySet="category" />
+      <End Role="news" EntitySet="news" />
+    </AssociationSet>
+    <AssociationSet Name="FK_patron_To_patron_type" Association="Self.FK_patron_To_patron_type">
+      <End Role="patron_type" EntitySet="patron_type" />
+      <End Role="patron" EntitySet="patron" />
+    </AssociationSet>
+    <AssociationSet Name="FK_patron_To_user_info" Association="Self.FK_patron_To_user_info">
+      <End Role="user_info" EntitySet="user_info" />
+      <End Role="patron" EntitySet="patron" />
+    </AssociationSet>
+    <AssociationSet Name="FK_renew_card_logs_ToPatron" Association="Self.FK_renew_card_logs_ToPatron">
+      <End Role="patron" EntitySet="patron" />
+      <End Role="renew_card_logs" EntitySet="renew_card_logs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

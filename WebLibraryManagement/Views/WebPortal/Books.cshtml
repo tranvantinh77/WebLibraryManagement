@@ -1,10 +1,10 @@
-﻿@model BibliographicIndexModel
+﻿
 @{
     Layout = "~/Views/WebPortal/Shared/_LayoutWebPortal.cshtml";
 }
 @section title
 {
-    @ResourceManagement.GetResourceText("SystemResourceID.Books", "Sách giấy", "Books")
+    Sách giấy
 }
 <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
 <div class="c-layout-breadcrumbs-1 c-bgimage-sachgiay">
@@ -33,8 +33,8 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="input-group input-group-lg">
-                        @Html.DropDownList("ddl-search-fieldsearch", Model.LstSearchField, new { @class = "form-control input-lg", @style = "width: 30%; background-color: #fff; color: #000" })
-                        <input type="text" style="width: 70%; background-color: #fff; color: #000" class="form-control input-lg" autofocus id="txt-search-keyword" onkeyup="core_lstpage.onSearchKeyUp(1, event)" placeholder="@ResourceManagement.GetResourceText("SystemResourceID.TypeKeyword", "Nhập từ khóa", "Type a keyword") ...">
+                        @*@Html.DropDownList("ddl-search-fieldsearch", Model.LstSearchField, new { @class = "form-control input-lg", @style = "width: 30%; background-color: #fff; color: #000" })*@
+                        <input type="text" style="width: 70%; background-color: #fff; color: #000" class="form-control input-lg" autofocus id="txt-search-keyword" onkeyup="core_lstpage.onSearchKeyUp(1, event)" placeholder="Nhập từ khóa ...">
                         <span class="input-group-btn">
                             <button type="button" onclick="core_lstpage.onSearch(1)" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square"><i class="icon-magnifier mr5"></i></button>
                         </span>
@@ -52,7 +52,7 @@
 
 @section Scripts
 {
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         var pageIndex = 1;
         var ctorPage = {
             UrlPage: '@Url.Action("bookspaging", "webportal")',
@@ -104,5 +104,5 @@
             }
         }
 
-    </script>
+    </script>*@
 }
