@@ -1,0 +1,266 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section title
+{
+    Hệ thống quản lý
+}
+<div class="page-content-wrapper">
+    <!-- BEGIN CONTENT BODY -->
+    <div class="page-content lv-pageContent">
+        <!-- BEGIN PAGE BAR -->
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a href="/admin">Trang chủ</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    <a href="">Quản lý bạn đọc</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    <a href="/admin/patronmanagement/list">Danh sách</a>
+                </li>
+            </ul>
+        </div>
+        <!-- END PAGE BAR -->
+        <div class="page-content-main page-search">
+            <div class="page-content-1zone">
+                <div class="portlet light pt0 pb0">
+                    <div class="portlet-body pb0">
+                        <!--SEARCH-->
+                        <div class="search-box">
+                            <form th:action="" method="GET">
+                                <div class="row">
+                                    <div class="col-md-12 xs-mt-12">
+                                        <div class="input-search-single">
+                                            <input autofocus id="txt-um-keyword" type="text" name="keyword"
+                                                   class="form-control"
+                                                   placeholder="Nhập từ khóa ...">
+                                            <button type="submit" class="btn green mr0 btn-search-text-single">
+                                                <i class="icon-magnifier mr5"></i>Tìm kiếm
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div><!--END SEARCH-->
+                        <!--LIST CONTENT-->
+                        <div id="body-content">
+
+                            <div class="row mt10">
+                                <div class="col-md-6">
+                                    <div class="doc-group-title">
+                                        <span aria-hidden="true" class="icon-user"></span>
+                                        Tìm thấy tổng số <span id="lbl-getpaging-total"
+                                                               class="span-total"
+                                                               th:text="${list.size()}"></span>biểu
+                                        ghi
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="doc-group-title pull-right">
+                                        <a href="/admin/patronmanagement/insert" class="btn green">
+                                            <i class="icon icon-plus mr5"></i>
+                                            Thêm
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt10">
+                                <div class="col-md-12">
+                                    <div class="searh-result">
+                                        <div id="table-scroll" class="table-scroll">
+                                            <div class="table-scrollable" style="min-height:initial !important">
+                                                <table class="table table-bordered main-table"
+                                                       style="width: 1600px">
+                                                    <thead class="flip-content1">
+                                                        <tr>
+                                                            <th class="text-center" style="width: 40px">#</th>
+                                                            <th>Mã bạn đọc</th>
+                                                            <th>Tên bạn đọc</th>
+                                                            <th>Loại bạn đọc</th>
+                                                            <th>Giới tính</th>
+                                                            <th>Trang thái</th>
+                                                            <th>Địa chỉ</th>
+                                                            <th class="text-center">Ngày hiệu lực</th>
+                                                            <th class="text-center">Ngày hết hạn</th>
+                                                            <th class="text-center">Thao tác</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody id="bodyView">
+                                                        <tr th:each="patron,iterStat : ${patrons.pageList}">
+                                                            <td class="text-center" th:text="${iterStat.count+(pagesize*(pageNumber - 1))}"></td>
+                                                            <td>
+                                                                <a href=""
+                                                                   th:text="${patron.code}">
+                                                                </a>
+                                                            </td>
+                                                            <td th:text="${patron.userId.fullName}"></td>
+                                                            <td th:text="${patron.getTypeId().getName()}">
+                                                                Sinh
+                                                                viên
+                                                            </td>
+                                                            <td th:utext="${patron.userId.sexDisplay()}"></td>
+                                                            <td th:utext="${patron.statusDisplay()}"></td>
+                                                            <td th:text="${patron.userId.address}"></td>
+                                                            <td th:text="${patron.creationDate}"></td>
+                                                            <td th:text="${patron.expirationDate}"></td>
+
+                                                            <td class="text-right">
+                                                                <a href=""
+                                                                   class="btn btn-xs btn-icon-only btn-info"
+                                                                   title="Cập nhật">
+                                                                    <i class="icon icon-pencil mr5"></i>
+                                                                </a>
+
+                                                                <button class="btn btn-xs red btn-icon-only"
+                                                                        title="Xóa"
+                                                                        th:onclick="'core_lstpage.onDelete('+${patron.id}+')'">
+                                                                    <i class="fa fa-times"
+                                                                       aria-hidden="true"></i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="row">
+                                <div class="col-md-12" th:if="${list.size()} > ${pagesize}">
+                                    <div class="pagination-control">
+                                        <div class="row">
+                                            <div class="col-md-12 pull-right">
+                                                <div id="page-selection" class="padding-top-15 clearboth">
+                                                    <ul class="pagination">
+                                                        <li th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">
+                                                            <a th:href="@{/admin/patronmanagement/list}"
+                                                               class="page-link">
+                                                                <span class="ms-bold fa fa-angle-double-left"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li th:class="${currentIndex == 1}? 'page-item disabled': 'page-item' ">
+                                                            <a href="#" class="page-link"
+                                                               th:href="@{|${baseUrl}${currentIndex - 1}|}">
+                                                                <span class="ms-bold fa fa-angle-left"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
+                                                            th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
+                                                            <a th:href="@{|${baseUrl}${item}|}"
+                                                               class="page-link">
+                                                                <span th:text='${item}'></span>
+                                                            </a>
+                                                        </li>
+
+                                                        <li th:class="${currentIndex == totalPageCount}? 'page-item disabled': 'page-item'">
+                                                            <a th:href="@{|${baseUrl}${currentIndex + 1}|}"
+                                                               class="page-link">
+                                                                <span class="ms-bold fa fa-angle-right"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
+                                                            <a th:href="@{|${baseUrl}${totalPageCount}|}"
+                                                               class="page-link">
+                                                                <span class="ms-bold fa fa-angle-double-right"></span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                        </div><!--END LIST CONTENT-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END CONTENT BODY -->
+    <!-- BEGIN MODAL -->
+    <div class="myForm">
+        <div class="modal fade"
+             id="stackPopup"
+             tabindex="-1"
+             role="dialog"
+             data-backdrop="static">
+            <div class="modal-dialog ">
+                <div class="modal-content" id="popupPageDetail">
+                    <form action="" modelAttribute="patron" method="post">
+                        <input style="display: none" name="patronId" id="patronId" value="" />
+                        <div class="content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">×</button>
+                                <h4 class="modal-title">Gia hạn bạn đọc</h4>
+                            </div>
+                            <div class="modal-body">
+                                <!--                                        <div class="form-group form-md-line-input">-->
+                                <!--                                            <div class="input-group2">-->
+                                <!--                                                <div class="input-group-control ">-->
+                                <!--                                                    <div class="input-group date date-picker"-->
+                                <!--                                                         data-date-format="dd/mm/yyyy">-->
+                                <!--                                                        <label>Ngày hết gia hạn mới</label>-->
+                                <!--                                                        <input style="width:559px" type="date" id="popupExpirationDate"-->
+                                <!--                                                               class="form-control"-->
+                                <!--                                                               name="ExpirationDate" th:value="${exp}">-->
+                                <!--                                                        <span class="input-group-btn"></span>-->
+                                <!--                                                    </div>-->
+                                <!--                                                </div>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <div class="row">
+                                    <div class="table-scroll">
+                                        <div class="table-scrollable">
+                                            <table class="table table-bordered main-table"
+                                                   style="width: 1600px">
+                                                <thead class="flip-content1">
+                                                    <tr>
+                                                        <th class="text-center">#</th>
+                                                        <th>Mã bạn đọc</th>
+                                                        <th>Tên bạn đọc</th>
+                                                        <th>Ngày hết hạn</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center" id="stt">1</td>
+                                                        <td class="text" id="code"></td>
+                                                        <td class="text" id="name"></td>
+                                                        <td class="text" id="expirationDate"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-center">
+                                        <div class="errMsg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Đồng ý</button>
+                                <button type="submit" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END MODAL -->
+    </div>
+    <!-- END CONTENT -->
+</div>

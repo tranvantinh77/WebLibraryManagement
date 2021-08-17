@@ -28,13 +28,13 @@ namespace WebLibraryManagement.Models
         public Nullable<System.DateTime> publish_date { get; set; }
         public string publish_place { get; set; }
         public string publisher { get; set; }
-        public Nullable<bool> status { get; set; }
+        public Nullable<int> status { get; set; }
         public Nullable<int> total { get; set; }
         public string create_by { get; set; }
         public Nullable<System.DateTime> create_date { get; set; }
         public string update_by { get; set; }
         public Nullable<System.DateTime> update_date { get; set; }
-        public Nullable<bool> active_fag { get; set; }
+        public Nullable<int> active_fag { get; set; }
         public Nullable<int> material_type_id { get; set; }
     
         public virtual material_types material_types { get; set; }

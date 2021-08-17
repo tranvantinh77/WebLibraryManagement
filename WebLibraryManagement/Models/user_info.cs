@@ -27,15 +27,13 @@ namespace WebLibraryManagement.Models
         public string address { get; set; }
         public string phone { get; set; }
         public string code { get; set; }
-        public Nullable<bool> name { get; set; }
-        public Nullable<bool> order_number { get; set; }
-        public Nullable<bool> status { get; set; }
-        public Nullable<bool> role { get; set; }
+        public Nullable<int> status { get; set; }
+        public Nullable<int> role { get; set; }
         public string create_by { get; set; }
         public Nullable<System.DateTime> create_date { get; set; }
         public string update_by { get; set; }
         public Nullable<System.DateTime> update_date { get; set; }
-        public Nullable<bool> active_fag { get; set; }
+        public Nullable<int> active_fag { get; set; }
     
         public virtual ICollection<patron> patrons { get; set; }
     }

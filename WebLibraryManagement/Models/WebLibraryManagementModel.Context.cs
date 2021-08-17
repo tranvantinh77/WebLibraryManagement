@@ -13,10 +13,10 @@ namespace WebLibraryManagement.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LibraryManagementEntities : DbContext
+    public partial class WebLibraryManagementEntities : DbContext
     {
-        public LibraryManagementEntities()
-            : base("name=LibraryManagementEntities")
+        public WebLibraryManagementEntities()
+            : base("name=WebLibraryManagementEntities")
         {
         }
     

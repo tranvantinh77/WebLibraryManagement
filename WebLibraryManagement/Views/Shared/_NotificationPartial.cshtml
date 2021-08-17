@@ -1,6 +1,6 @@
 ﻿<script type="text/javascript">
 
-    var title = '@ResourceManagement.GetResourceText("SystemResourceID.NotificationSystem", "HỆ THỐNG THÔNG BÁO", "NOTIFICATION SYSTEM")';
+    var title = 'HỆ THỐNG THÔNG BÁO", "NOTIFICATION SYSTEM';
 
     toastr.options = {
         "closeButton": true,
@@ -19,7 +19,7 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut",
     };
-    var core_notification = {
+    @*var core_notification = {
         messageNotify: function (_message) {
             toastr['@Constant.Notification_Error'](_message, title);
         },
@@ -214,7 +214,7 @@
                 this.callback();
             }
         }
-    };
+    };*@
 
 </script>
 

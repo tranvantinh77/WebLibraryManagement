@@ -19,11 +19,11 @@ namespace WebLibraryManagement.Models
         public string image { get; set; }
         public Nullable<System.DateTime> publish_date { get; set; }
         public string description { get; set; }
-        public Nullable<bool> status { get; set; }
+        public Nullable<int> status { get; set; }
         public string create_by { get; set; }
         public Nullable<System.DateTime> create_date { get; set; }
         public string update_by { get; set; }
         public Nullable<System.DateTime> update_date { get; set; }
-        public Nullable<bool> active_fag { get; set; }
+        public Nullable<int> active_fag { get; set; }
     }
 }

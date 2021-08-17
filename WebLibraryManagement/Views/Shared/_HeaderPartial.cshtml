@@ -26,13 +26,13 @@
         <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
             <span></span>
         </a>
-        <div class="logon uppercase">@ResourceManagement.GetResourceText("SystemResourceID.Title", "Hệ thống quản lý thư viện", "Library Management Systems")</div>
+        <div class="logon uppercase">Hệ thống quản lý</div>
         <div class="top-menu hidden-sm hidden-xs">
             <ul class="nav navbar-nav pull-right">
                 @*<div class="partialContents" data-url="@Url.Action(Constant.PartialView_SchoolPartial, Constant.Controller_Home)"></div>*@
-                @{Html.RenderAction(Constant.PartialView_SchoolPartial, Constant.Controller_Home);}
-                @Html.Partial(Constant.PartialView_LanguagePartial)
-                @Html.Partial(Constant.PartialView_LoginPartial)
+                @*@{Html.RenderAction(Constant.PartialView_SchoolPartial, Constant.Controller_Home);}*@
+                @*@Html.Partial(Constant.PartialView_LanguagePartial)*@
+                @Html.Partial("_LoginPartial")
                 <!-- END QUICK SIDEBAR TOGGLER -->
             </ul>
         </div>

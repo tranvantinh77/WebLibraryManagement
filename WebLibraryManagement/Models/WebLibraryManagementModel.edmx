@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LibraryManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="WebLibraryManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="author">
           <Key>
             <PropertyRef Name="Id" />
@@ -17,7 +17,7 @@
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <EntityType Name="banner">
           <Key>
@@ -28,12 +28,12 @@
           <Property Name="image" Type="nvarchar" MaxLength="255" />
           <Property Name="publish_date" Type="datetime" />
           <Property Name="description" Type="nvarchar" MaxLength="255" />
-          <Property Name="status" Type="bit" />
+          <Property Name="status" Type="int" />
           <Property Name="create_by" Type="nvarchar" MaxLength="255" />
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <EntityType Name="blocked_tracking">
           <Key>
@@ -47,7 +47,7 @@
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <EntityType Name="books">
           <Key>
@@ -61,13 +61,13 @@
           <Property Name="publish_date" Type="datetime" />
           <Property Name="publish_place" Type="nvarchar" MaxLength="255" />
           <Property Name="publisher" Type="nvarchar" MaxLength="255" />
-          <Property Name="status" Type="bit" />
+          <Property Name="status" Type="int" />
           <Property Name="total" Type="int" />
           <Property Name="create_by" Type="nvarchar" MaxLength="255" />
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
           <Property Name="material_type_id" Type="int" />
         </EntityType>
         <EntityType Name="category">
@@ -83,7 +83,7 @@
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <EntityType Name="checkout">
           <Key>
@@ -95,12 +95,12 @@
           <Property Name="checkout_date" Type="datetime" />
           <Property Name="due_date" Type="datetime" />
           <Property Name="renew_count" Type="int" />
-          <Property Name="status" Type="bit" />
+          <Property Name="status" Type="int" />
           <Property Name="create_by" Type="nvarchar" MaxLength="255" />
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <EntityType Name="circulation">
           <Key>
@@ -109,7 +109,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="book_id" Type="int" />
           <Property Name="patron_id" Type="int" />
-          <Property Name="action" Type="bit" />
+          <Property Name="action" Type="int" />
           <Property Name="checkout_date" Type="datetime" />
           <Property Name="due_date" Type="datetime" />
           <Property Name="trans_date" Type="datetime" />
@@ -118,7 +118,7 @@
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <EntityType Name="contact">
           <Key>
@@ -133,7 +133,7 @@
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <EntityType Name="material_types">
           <Key>
@@ -147,7 +147,7 @@
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <EntityType Name="news">
           <Key>
@@ -159,7 +159,7 @@
           <Property Name="body" Type="nvarchar(max)" />
           <Property Name="publish_date" Type="datetime" />
           <Property Name="image" Type="nvarchar" MaxLength="255" />
-          <Property Name="status" Type="bit" />
+          <Property Name="status" Type="int" />
           <Property Name="total_view" Type="int" />
           <Property Name="author_id" Type="int" />
           <Property Name="category_id" Type="int" />
@@ -167,7 +167,7 @@
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <EntityType Name="patron">
           <Key>
@@ -175,12 +175,12 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="code" Type="nvarchar" MaxLength="255" />
-          <Property Name="status" Type="bit" />
+          <Property Name="status" Type="int" />
           <Property Name="create_by" Type="nvarchar" MaxLength="255" />
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
           <Property Name="type_id" Type="int" />
           <Property Name="user_id" Type="int" />
         </EntityType>
@@ -190,14 +190,14 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="code" Type="nvarchar" MaxLength="255" />
-          <Property Name="name" Type="bit" />
-          <Property Name="order_number" Type="bit" />
-          <Property Name="status" Type="bit" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+          <Property Name="order_number" Type="int" />
+          <Property Name="status" Type="int" />
           <Property Name="create_by" Type="nvarchar" MaxLength="255" />
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <EntityType Name="renew_card_logs">
           <Key>
@@ -211,7 +211,7 @@
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <EntityType Name="user_info">
           <Key>
@@ -225,15 +225,13 @@
           <Property Name="address" Type="nvarchar" MaxLength="255" />
           <Property Name="phone" Type="nvarchar" MaxLength="11" />
           <Property Name="code" Type="nvarchar" MaxLength="255" />
-          <Property Name="name" Type="bit" />
-          <Property Name="order_number" Type="bit" />
-          <Property Name="status" Type="bit" />
-          <Property Name="role" Type="bit" />
+          <Property Name="status" Type="int" />
+          <Property Name="role" Type="int" />
           <Property Name="create_by" Type="nvarchar" MaxLength="255" />
           <Property Name="create_date" Type="datetime" />
           <Property Name="update_by" Type="nvarchar" MaxLength="255" />
           <Property Name="update_date" Type="datetime" />
-          <Property Name="active_fag" Type="bit" />
+          <Property Name="active_fag" Type="int" />
         </EntityType>
         <Association Name="FK_blocked_tracking_ToPatron">
           <End Role="patron" Type="Self.patron" Multiplicity="0..1" />
@@ -367,7 +365,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LibraryManagementModelStoreContainer">
+        <EntityContainer Name="WebLibraryManagementModelStoreContainer">
           <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="banner" EntityType="Self.banner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="blocked_tracking" EntityType="Self.blocked_tracking" Schema="dbo" store:Type="Tables" />
@@ -431,7 +429,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="LibraryManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="WebLibraryManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="author">
           <Key>
             <PropertyRef Name="Id" />
@@ -444,7 +442,7 @@
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <NavigationProperty Name="news" Relationship="Self.FK_news_author" FromRole="author" ToRole="news" />
         </EntityType>
         <EntityType Name="banner">
@@ -456,12 +454,12 @@
           <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="publish_date" Type="DateTime" Precision="3" />
           <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="status" Type="Boolean" />
+          <Property Name="status" Type="Int32" />
           <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
         </EntityType>
         <EntityType Name="blocked_tracking">
           <Key>
@@ -475,7 +473,7 @@
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <NavigationProperty Name="patron" Relationship="Self.FK_blocked_tracking_ToPatron" FromRole="blocked_tracking" ToRole="patron" />
         </EntityType>
         <EntityType Name="book">
@@ -490,13 +488,13 @@
           <Property Name="publish_date" Type="DateTime" Precision="3" />
           <Property Name="publish_place" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="publisher" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="status" Type="Boolean" />
+          <Property Name="status" Type="Int32" />
           <Property Name="total" Type="Int32" />
           <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <Property Name="material_type_id" Type="Int32" />
           <NavigationProperty Name="material_types" Relationship="Self.FK_books_ToTable" FromRole="books" ToRole="material_types" />
           <NavigationProperty Name="checkouts" Relationship="Self.FK_checkout_ToBook" FromRole="books" ToRole="checkout" />
@@ -515,7 +513,7 @@
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <NavigationProperty Name="news" Relationship="Self.FK_news_category" FromRole="category" ToRole="news" />
         </EntityType>
         <EntityType Name="checkout">
@@ -528,12 +526,12 @@
           <Property Name="checkout_date" Type="DateTime" Precision="3" />
           <Property Name="due_date" Type="DateTime" Precision="3" />
           <Property Name="renew_count" Type="Int32" />
-          <Property Name="status" Type="Boolean" />
+          <Property Name="status" Type="Int32" />
           <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <NavigationProperty Name="book" Relationship="Self.FK_checkout_ToBook" FromRole="checkout" ToRole="books" />
           <NavigationProperty Name="patron" Relationship="Self.FK_checkout_ToPatron" FromRole="checkout" ToRole="patron" />
         </EntityType>
@@ -544,7 +542,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="book_id" Type="Int32" />
           <Property Name="patron_id" Type="Int32" />
-          <Property Name="action" Type="Boolean" />
+          <Property Name="action" Type="Int32" />
           <Property Name="checkout_date" Type="DateTime" Precision="3" />
           <Property Name="due_date" Type="DateTime" Precision="3" />
           <Property Name="trans_date" Type="DateTime" Precision="3" />
@@ -553,7 +551,7 @@
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <NavigationProperty Name="book" Relationship="Self.FK_circulation_ToBook" FromRole="circulation" ToRole="books" />
           <NavigationProperty Name="patron" Relationship="Self.FK_circulation_ToPatron" FromRole="circulation" ToRole="patron" />
         </EntityType>
@@ -570,7 +568,7 @@
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
         </EntityType>
         <EntityType Name="material_types">
           <Key>
@@ -584,7 +582,7 @@
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <NavigationProperty Name="books" Relationship="Self.FK_books_ToTable" FromRole="material_types" ToRole="books" />
         </EntityType>
         <EntityType Name="news">
@@ -597,7 +595,7 @@
           <Property Name="body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="publish_date" Type="DateTime" Precision="3" />
           <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="status" Type="Boolean" />
+          <Property Name="status" Type="Int32" />
           <Property Name="total_view" Type="Int32" />
           <Property Name="author_id" Type="Int32" />
           <Property Name="category_id" Type="Int32" />
@@ -605,7 +603,7 @@
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <NavigationProperty Name="author" Relationship="Self.FK_news_author" FromRole="news" ToRole="author" />
           <NavigationProperty Name="category" Relationship="Self.FK_news_category" FromRole="news" ToRole="category" />
         </EntityType>
@@ -615,12 +613,12 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="status" Type="Boolean" />
+          <Property Name="status" Type="Int32" />
           <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <Property Name="type_id" Type="Int32" />
           <Property Name="user_id" Type="Int32" />
           <NavigationProperty Name="blocked_tracking" Relationship="Self.FK_blocked_tracking_ToPatron" FromRole="patron" ToRole="blocked_tracking" />
@@ -636,14 +634,14 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="name" Type="Boolean" />
-          <Property Name="order_number" Type="Boolean" />
-          <Property Name="status" Type="Boolean" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="order_number" Type="Int32" />
+          <Property Name="status" Type="Int32" />
           <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <NavigationProperty Name="patrons" Relationship="Self.FK_patron_To_patron_type" FromRole="patron_type" ToRole="patron" />
         </EntityType>
         <EntityType Name="renew_card_logs">
@@ -658,7 +656,7 @@
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <NavigationProperty Name="patron" Relationship="Self.FK_renew_card_logs_ToPatron" FromRole="renew_card_logs" ToRole="patron" />
         </EntityType>
         <EntityType Name="user_info">
@@ -673,15 +671,13 @@
           <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="name" Type="Boolean" />
-          <Property Name="order_number" Type="Boolean" />
-          <Property Name="status" Type="Boolean" />
-          <Property Name="role" Type="Boolean" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="role" Type="Int32" />
           <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="active_fag" Type="Boolean" />
+          <Property Name="active_fag" Type="Int32" />
           <NavigationProperty Name="patrons" Relationship="Self.FK_patron_To_user_info" FromRole="user_info" ToRole="patron" />
         </EntityType>
         <Association Name="FK_news_author">
@@ -816,7 +812,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LibraryManagementEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WebLibraryManagementEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="authors" EntityType="Self.author" />
           <EntitySet Name="banners" EntityType="Self.banner" />
           <EntitySet Name="blocked_tracking" EntityType="Self.blocked_tracking" />
@@ -881,9 +877,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LibraryManagementModelStoreContainer" CdmEntityContainer="LibraryManagementEntities">
+        <EntityContainerMapping StorageEntityContainer="WebLibraryManagementModelStoreContainer" CdmEntityContainer="WebLibraryManagementEntities">
           <EntitySetMapping Name="authors">
-            <EntityTypeMapping TypeName="LibraryManagementModel.author">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.author">
               <MappingFragment StoreEntitySet="author">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -898,7 +894,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="banners">
-            <EntityTypeMapping TypeName="LibraryManagementModel.banner">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.banner">
               <MappingFragment StoreEntitySet="banner">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -915,7 +911,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="blocked_tracking">
-            <EntityTypeMapping TypeName="LibraryManagementModel.blocked_tracking">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.blocked_tracking">
               <MappingFragment StoreEntitySet="blocked_tracking">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="action_date" ColumnName="action_date" />
@@ -930,7 +926,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="books">
-            <EntityTypeMapping TypeName="LibraryManagementModel.book">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.book">
               <MappingFragment StoreEntitySet="books">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="code" ColumnName="code" />
@@ -952,7 +948,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="categories">
-            <EntityTypeMapping TypeName="LibraryManagementModel.category">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.category">
               <MappingFragment StoreEntitySet="category">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="code" ColumnName="code" />
@@ -968,7 +964,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="checkouts">
-            <EntityTypeMapping TypeName="LibraryManagementModel.checkout">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.checkout">
               <MappingFragment StoreEntitySet="checkout">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="patron_id" ColumnName="patron_id" />
@@ -986,7 +982,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="circulations">
-            <EntityTypeMapping TypeName="LibraryManagementModel.circulation">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.circulation">
               <MappingFragment StoreEntitySet="circulation">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="book_id" ColumnName="book_id" />
@@ -1005,7 +1001,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="contacts">
-            <EntityTypeMapping TypeName="LibraryManagementModel.contact">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.contact">
               <MappingFragment StoreEntitySet="contact">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="full_name" ColumnName="full_name" />
@@ -1021,7 +1017,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="material_types">
-            <EntityTypeMapping TypeName="LibraryManagementModel.material_types">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.material_types">
               <MappingFragment StoreEntitySet="material_types">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1036,7 +1032,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="news">
-            <EntityTypeMapping TypeName="LibraryManagementModel.news">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.news">
               <MappingFragment StoreEntitySet="news">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -1057,7 +1053,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="patrons">
-            <EntityTypeMapping TypeName="LibraryManagementModel.patron">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.patron">
               <MappingFragment StoreEntitySet="patron">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="code" ColumnName="code" />
@@ -1073,7 +1069,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="patron_type">
-            <EntityTypeMapping TypeName="LibraryManagementModel.patron_type">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.patron_type">
               <MappingFragment StoreEntitySet="patron_type">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="code" ColumnName="code" />
@@ -1089,7 +1085,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="renew_card_logs">
-            <EntityTypeMapping TypeName="LibraryManagementModel.renew_card_logs">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.renew_card_logs">
               <MappingFragment StoreEntitySet="renew_card_logs">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="new_due_date" ColumnName="new_due_date" />
@@ -1104,7 +1100,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="user_info">
-            <EntityTypeMapping TypeName="LibraryManagementModel.user_info">
+            <EntityTypeMapping TypeName="WebLibraryManagementModel.user_info">
               <MappingFragment StoreEntitySet="user_info">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="user_name" ColumnName="user_name" />
@@ -1114,8 +1110,6 @@
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="order_number" ColumnName="order_number" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="role" ColumnName="role" />
                 <ScalarProperty Name="create_by" ColumnName="create_by" />

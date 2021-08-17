@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d2afdcb9b40842d59d6753cbae537050" Name="Diagram1">
+        <EntityTypeShape EntityType="WebLibraryManagementModel.author" Width="1.5" PointX="8.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.banner" Width="1.5" PointX="10.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.blocked_tracking" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.book" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.category" Width="1.5" PointX="8.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.checkout" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.circulation" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.contact" Width="1.5" PointX="10.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.material_types" Width="1.5" PointX="3.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.news" Width="1.5" PointX="11" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.patron" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.patron_type" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.renew_card_logs" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebLibraryManagementModel.user_info" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="WebLibraryManagementModel.FK_news_author" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLibraryManagementModel.FK_blocked_tracking_ToPatron" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLibraryManagementModel.FK_books_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLibraryManagementModel.FK_checkout_ToBook" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLibraryManagementModel.FK_circulation_ToBook" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLibraryManagementModel.FK_news_category" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLibraryManagementModel.FK_checkout_ToPatron" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLibraryManagementModel.FK_circulation_ToPatron" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLibraryManagementModel.FK_patron_To_patron_type" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLibraryManagementModel.FK_patron_To_user_info" ManuallyRouted="false" />
+        <AssociationConnector Association="WebLibraryManagementModel.FK_renew_card_logs_ToPatron" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,80 +1,174 @@
-﻿@model List<LMS.Dto.MenuDto>
+﻿
 <li class="sidebar-toggler-wrapper hide">
     <div class="sidebar-toggler">
         <span></span>
     </div>
 </li>
-@if (Model.Count > 0)
-{
-    var LstMenu = Model.Where(x => x.ParentId == null).OrderBy(x => x.OrderNumber);
-    var lstMenuSub = Model.Where(x => x.ParentId != null);
+<li class="nav-item" id="nav-none">
+    <a href="/HomeAdmin/Index" class="nav-link nav-toggle">
+        <i class="icon-home"></i> <span class="uppercase title">
+            Trang chủ
+        </span> <span class="selected"></span>
+    </a>
+</li>
+<li class="nav-item" id="nav-b35fa3f4-4b89-4e9c-9693-5ab7fba3e8ef">
+    <a class="nav-link nav-toggle">
+        <i class="icon-user"></i> <span class="uppercase title">Quản lý bạn đọc</span> <span class="arrow" id="nav-span-b35fa3f4-4b89-4e9c-9693-5ab7fba3e8ef"></span>
+    </a>
+    <ul class="sub-menu" style="display: none;">
+        <li class="nav-item" id="nav-patronmanagement-insert">
+            <a href="/admin/patronmanagement/insert" class="nav-link">
+                <span class="title">Thêm mới</span>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-patronmanagement-list">
+            <a href="/admin/patronmanagement/list" class="nav-link">
+                <span class="title">Danh sách</span>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-blockedtracking-list">
+            <a href="/admin/blockedtracking/list" class="nav-link">
+                <span class="title">Nhật ký khóa thẻ</span>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-renewcardlog-list">
+            <a href="/admin/renewcardlog/list" class="nav-link">
+                <span class="title">Nhật ký gia hạn thẻ</span>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-patronmanagement-tools">
+            <a class="nav-link nav-toggle">
+                <span class="title">
+                    Công
+                    cụ
+                </span> <span class="arrow" id="nav-span-patronmanagement-tools"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item"
+                    id="nav-patronmanagement-patronmanagement-patrontypemanagement">
+                    <a href="/admin/patrontypemanagement/list" class="nav-link ">
+                        <span class="title">Loại bạn đọc</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</li>
+<li class="nav-item" id="nav-0765c183-3c39-4a56-af3c-1fa4119698ca">
+    <a class="nav-link nav-toggle">
+        <i class="icon-notebook"></i>
+        <span class="uppercase title">Quản lý sách giấy</span> <span class="arrow" id="nav-span-0765c183-3c39-4a56-af3c-1fa4119698ca"></span>
+    </a>
+    <ul class="sub-menu">
+        <li class="nav-item" id="nav-bibliographic-update">
+            <a href="/admin/booksmanagement/insert" class="nav-link">
+                <span class="title">Thêm mới</span>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-bibliographic-list">
+            <a href="/admin/booksmanagement/list" class="nav-link">
+                <span class="title">Danh sách</span>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-bibliographic-tools">
+            <a class="nav-link nav-toggle">
+                <span class="title">
+                    Công
+                    cụ
+                </span> <span class="arrow" id="nav-span-bibliographic-tools"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item"
+                    id="nav-cataloging-bibliographic-materialmanagement">
+                    <a href="/admin/materialmanagement/list" class="nav-link ">
+                        <span class="title">Loại tài liệu</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</li>
+<li class="nav-item" id="nav-0e19b78e-9757-4394-837d-d3d9ebc33dfc">
+    <a class="nav-link nav-toggle">
+        <i class="icon-calculator"></i>
+        <span class="uppercase title">Quản lý mượn trả</span> <span class="arrow" id="nav-span-0e19b78e-9757-4394-837d-d3d9ebc33dfc"></span>
+    </a>
+    <ul class="sub-menu">
+        <li class="nav-item" id="nav-checkout-index">
+            <a href="/admin/checkout/index" class="nav-link">
+                <span class="title">Mượn trả</span>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-circulation-history">
+            <a href="/admin/circulation/history" class="nav-link">
+                <span class="title">Nhật ký lưu thông</span>
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item" id="nav-0e19b78e-9757-4394-837d-d3d9ebc33dfd">
+    <a class="nav-link nav-toggle">
+        <i class="icon-social-dribbble"></i> <span class="uppercase title">
+            Quản
+            lý cổng thông tin
+        </span> <span class="arrow"
+                      id="nav-span-0e19b78e-9757-4394-837d-d3d9ebc33dfd"></span>
+    </a>
+    <ul class="sub-menu">
+        <li class="nav-item" id="nav-sitemanagement-list">
+            <a href="/admin/bannermanagement/list" class="nav-link">
+                <span class="title">Quản lý banner</span>
+            </a>
+        </li>
+        <li class="nav-item" id="nav-newsmanagement-list">
+            <a class="nav-link nav-toggle">
+                <span class="title">
+                    Quản
+                    lý tin tức
+                </span> <span class="arrow"
+                              id="nav-span-newsmanagement-list"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item"
+                    id="nav-portaladmin-newsmanagement-newsmanagement">
+                    <a href="/admin/newsmanagement/list" class="nav-link ">
+                        <span class="title">Tin tức</span>
+                    </a>
+                </li>
+                <li class="nav-item"
+                    id="nav-portaladmin-newsmanagement-categorymanagement">
+                    <a href="/admin/categorymanagement/list" class="nav-link ">
+                        <span class="title">Chuyên mục</span>
+                    </a>
+                </li>
+                <li class="nav-item"
+                    id="nav-portaladmin-newsmanagement-authormanagement">
+                    <a href="/admin/authormanagement/list" class="nav-link ">
+                        <span class="title">Tác giả</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item" id="nav-filesmanagement-list">
+            <a href="/admin/contactmanagement/list" class="nav-link">
+                <span class="title">Liên hệ</span>
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item" id="nav-226a6b8c-2fe3-4ef4-9405-c4cb5d728cef">
+    <a class="nav-link nav-toggle">
+        <i class="icon-users"></i> <span class="uppercase title">Quản lý người dùng</span> <span class="arrow" id="nav-span-226a6b8c-2fe3-4ef4-9405-c4cb5d728cef"></span>
+    </a>
+    <ul class="sub-menu">
+        <li class="nav-item" id="nav-usermanagement-list">
+            <a href="/admin/usermanagement/list" class="nav-link">
+                <span class="title">Người dùng</span>
+            </a>
+        </li>
+    </ul>
+</li>
 
-    foreach (var item in LstMenu)
-    {
-        var lstSub = lstMenuSub.Where(x => x.ParentId == item.Id).OrderBy(x => x.OrderNumber);
-        if (lstSub.Count() > 0)
-        {
-            <li class="nav-item" id="nav-@item.Id">
-                <a class="nav-link nav-toggle">
-                    <i class="@item.Icon"></i>
-                    <span class="uppercase title">@ResourceManagement.GetResourceText(item.ResourceID, item.NameVI, item.NameEN)</span>
-                    <span class="arrow" id="nav-span-@item.Id"></span>
-                </a>
-                <ul class="sub-menu">
-                    @foreach (var sub in lstSub)
-                    {
-                        var lstSubSecond = lstMenuSub.Where(x => x.ParentId == sub.Id).OrderBy(x => x.OrderNumber).ToList();
-                        if (lstSubSecond.Count > 0)
-                        {
-                            <li class="nav-item" id="nav-@sub.Controller.ToLower()-@sub.Action.ToLower()">
-                                <a class="nav-link nav-toggle">
-                                    <span class="title">@ResourceManagement.GetResourceText(sub.ResourceID, sub.NameVI, sub.NameEN)</span>
-                                    <span class="arrow" id="nav-span-@sub.Controller.ToLower()-@sub.Action.ToLower()"></span>
-                                </a>
-                                <ul class="sub-menu">
-                                    @foreach (var sub2 in lstSubSecond)
-                                    {
-                                        <li class="nav-item" id="nav-@item.Controller.ToLower()-@sub.Controller.ToLower()-@sub2.Controller.ToLower()">
-                                            <a href="@Url.Action(sub2.Action.ToLower(), sub2.Controller.ToLower())" class="nav-link ">
-                                                <span class="title">@ResourceManagement.GetResourceText(sub2.ResourceID, sub2.NameVI, sub2.NameEN)</span>
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item" id="nav-@sub.Controller.ToLower()-@sub.Action.ToLower()">
-                                <a href="@Url.Action(sub.Action.ToLower(), sub.Controller.ToLower())" class="nav-link">
-                                    <span class="title">@ResourceManagement.GetResourceText(sub.ResourceID, sub.NameVI, sub.NameEN)</span>
-                                </a>
-                            </li>
-                        }
-                    }
-                </ul>
-            </li>
-        }
-        else
-        {
-            <li class="nav-item" id="nav-@item.Controller.ToLower()">
-                <a href="/admin" class="nav-link nav-toggle">
-                    <i class="@item.Icon"></i>
-                    <span class="uppercase title">@ResourceManagement.GetResourceText(item.ResourceID, item.NameVI, item.NameEN)</span>
-                </a>
-            </li>
-        }
-    }
-}
-else
-{
-    <li class="nav-item active open" id="nav-none">
-        <a href="/admin" class="nav-link nav-toggle">
-            <i class="glyphicon glyphicon-home"></i>
-            <span class="uppercase title">@ResourceManagement.GetResourceText("SystemResourceID.Home", "Trang chủ", "Home")</span>
-        </a>
-    </li>
-}
 
 
 

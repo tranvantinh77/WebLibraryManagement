@@ -17,7 +17,7 @@ namespace WebLibraryManagement.Models
         public int Id { get; set; }
         public Nullable<int> book_id { get; set; }
         public Nullable<int> patron_id { get; set; }
-        public Nullable<bool> action { get; set; }
+        public Nullable<int> action { get; set; }
         public Nullable<System.DateTime> checkout_date { get; set; }
         public Nullable<System.DateTime> due_date { get; set; }
         public Nullable<System.DateTime> trans_date { get; set; }
@@ -26,7 +26,7 @@ namespace WebLibraryManagement.Models
         public Nullable<System.DateTime> create_date { get; set; }
         public string update_by { get; set; }
         public Nullable<System.DateTime> update_date { get; set; }
-        public Nullable<bool> active_fag { get; set; }
+        public Nullable<int> active_fag { get; set; }
     
         public virtual book book { get; set; }
         public virtual patron patron { get; set; }

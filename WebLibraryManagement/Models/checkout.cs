@@ -20,12 +20,12 @@ namespace WebLibraryManagement.Models
         public Nullable<System.DateTime> checkout_date { get; set; }
         public Nullable<System.DateTime> due_date { get; set; }
         public Nullable<int> renew_count { get; set; }
-        public Nullable<bool> status { get; set; }
+        public Nullable<int> status { get; set; }
         public string create_by { get; set; }
         public Nullable<System.DateTime> create_date { get; set; }
         public string update_by { get; set; }
         public Nullable<System.DateTime> update_date { get; set; }
-        public Nullable<bool> active_fag { get; set; }
+        public Nullable<int> active_fag { get; set; }
     
         public virtual book book { get; set; }
         public virtual patron patron { get; set; }

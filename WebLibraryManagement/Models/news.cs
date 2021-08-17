@@ -20,7 +20,7 @@ namespace WebLibraryManagement.Models
         public string body { get; set; }
         public Nullable<System.DateTime> publish_date { get; set; }
         public string image { get; set; }
-        public Nullable<bool> status { get; set; }
+        public Nullable<int> status { get; set; }
         public Nullable<int> total_view { get; set; }
         public Nullable<int> author_id { get; set; }
         public Nullable<int> category_id { get; set; }
@@ -28,7 +28,7 @@ namespace WebLibraryManagement.Models
         public Nullable<System.DateTime> create_date { get; set; }
         public string update_by { get; set; }
         public Nullable<System.DateTime> update_date { get; set; }
-        public Nullable<bool> active_fag { get; set; }
+        public Nullable<int> active_fag { get; set; }
     
         public virtual author author { get; set; }
         public virtual category category { get; set; }

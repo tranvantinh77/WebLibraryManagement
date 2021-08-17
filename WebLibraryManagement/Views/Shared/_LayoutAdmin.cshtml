@@ -28,7 +28,7 @@
 	<meta content="Library Management Systems" name="description" />
 	<meta content="LMS Team" name="author" />
 	<meta content="Thư viện điện tử, thư viện trường học, thư viện cộng đồng, thư viện cloud, quản lý thư viện" name="keywords">
-	<link rel="shortcut icon" href="~/favicon.ico">
+	<link rel="shortcut icon" href="~/Content/webportal/favicon.ico">
 	@Styles.Render("~/Content/componentseditor")
 	<!-- BEGIN GLOBAL MANDATORY STYLES -->
 	@Styles.Render("~/Content/googlefont")
@@ -124,7 +124,7 @@
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 	<div class="page-wrapper">
 		<!-- BEGIN HEADER -->
-		@*@Html.Partial(Constant.PartialView_HeaderPartial)*@
+		@Html.Partial("_HeaderPartial")
 		<!-- END HEADER -->
 		<!-- BEGIN HEADER & CONTENT DIVIDER -->
 		<div class="clearfix"> </div>
@@ -132,20 +132,20 @@
 		<!-- BEGIN CONTAINER -->
 		<div class="page-container">
 			<!-- BEGIN PROGRESSBAR -->
-			@*@Html.Partial(Constant.PartialView_LoadingPartial)*@
+			@Html.Partial("_LoadingPartial")
 			<!-- END PROGRESSBAR -->
 			<!-- BEGIN PROGRESSBAR -->
-			@*@Html.Partial(Constant.PartialView_ProgressBarPartial)*@
+			@Html.Partial("_NotificationPartial")
 			<!-- END PROGRESSBAR -->
 			<!-- BEGIN NOTIFICATION -->
-			@*@Html.Partial(Constant.PartialView_NotificationPartial)*@
+			@Html.Partial("_NotificationPartial")
 			<!-- END NOTIFICATION -->
 			<!-- BEGIN SIDEBAR -->
 			<div class="page-sidebar-wrapper">
 				<!-- BEGIN SIDEBAR -->
 				<div class="page-sidebar navbar-collapse collapse ">
 					<ul class="page-sidebar-menu page-header-fixed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-						@*@{ Html.RenderAction(Constant.PartialView_LeftSidebarPartial, Constant.Controller_Home);}*@
+						@Html.Partial("_LeftSidebarPartial")
 					</ul>
 					<!-- END SIDEBAR MENU -->
 					<!-- END SIDEBAR MENU -->

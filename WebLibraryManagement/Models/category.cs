@@ -28,7 +28,7 @@ namespace WebLibraryManagement.Models
         public Nullable<System.DateTime> create_date { get; set; }
         public string update_by { get; set; }
         public Nullable<System.DateTime> update_date { get; set; }
-        public Nullable<bool> active_fag { get; set; }
+        public Nullable<int> active_fag { get; set; }
     
         public virtual ICollection<news> news { get; set; }
     }

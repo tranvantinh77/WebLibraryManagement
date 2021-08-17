@@ -21,14 +21,14 @@ namespace WebLibraryManagement.Models
     
         public int Id { get; set; }
         public string code { get; set; }
-        public Nullable<bool> name { get; set; }
-        public Nullable<bool> order_number { get; set; }
-        public Nullable<bool> status { get; set; }
+        public string name { get; set; }
+        public Nullable<int> order_number { get; set; }
+        public Nullable<int> status { get; set; }
         public string create_by { get; set; }
         public Nullable<System.DateTime> create_date { get; set; }
         public string update_by { get; set; }
         public Nullable<System.DateTime> update_date { get; set; }
-        public Nullable<bool> active_fag { get; set; }
+        public Nullable<int> active_fag { get; set; }
     
         public virtual ICollection<patron> patrons { get; set; }
     }
